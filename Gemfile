@@ -26,6 +26,9 @@ gem 'pundit'
 # Cron process
 gem 'rufus-scheduler'
 
+# Set timeout to requests
+gem "rack-timeout"
+
 # Jquery gem
 gem 'jquery-rails'
 gem 'jquery_mask_rails'
