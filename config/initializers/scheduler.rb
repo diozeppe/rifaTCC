@@ -32,7 +32,7 @@ scheduler.every '1m' do
         break
       end
 
-      result = rand(0..(ticketsToDraw.length()-1)
+      result = rand(0..(ticketsToDraw.length()-1))
 
       puts 'Buscando numero'
 
