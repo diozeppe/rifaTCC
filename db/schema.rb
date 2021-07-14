@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_204434) do
     t.integer "condition_id", default: 1
     t.integer "raffle_status_id", default: 1
     t.integer "delivery_type_id", default: 1
+    t.integer "winner_ticket_id"
     t.string "title"
     t.text "description"
     t.string "prize"

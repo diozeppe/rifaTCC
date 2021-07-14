@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="col-md-8">
+		<%= hidden_field_tag 'session_id', @raffle.id %>
 		<%= hidden_field_tag 'unit_value', number_with_precision(@raffle.unit_value, precision: 2) %>
 		<div id="tickets_list">
 		<div class="row">
@@ -49,7 +50,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-			<%= link_to 'Voltar', raffles_path, class: "btn btn-submit-adm mb-3" %>
+			<%= link_to 'Voltar', :back, class: "btn btn-submit-adm mb-3" %>
 			</div>
 			<div class="col-md-6">
 			<%= form_with url: raffles_check_tickets_path(@raffle), html: { method: :post }, class: 'has-error-feedback me-1' do |f| %>

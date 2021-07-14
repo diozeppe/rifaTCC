@@ -4,12 +4,12 @@
          <%= render 'layouts/navigation/sidebar_menu' %>
       </div>
       <div class="row">
-      <%= render 'layouts/navigation/sidebar_menu_filters' %>
+      <%= render 'shared/user/sidebar_menu_filters' %>
       </div>
    </div>
    <div class="col-md-8">
       <div class="row">
-            <h1 class="text-center">Campanhas</h1>
+            <h1 class="text-center">Minhas compras</h1>
       </div>
       <div class="row">
       <div id="intitution-raffles-list" class="pt-3">
@@ -27,7 +27,13 @@
 
                         <p><small class="text-muted">Por: <%= raffle.institution.social_reason %></small></p>
                         <h5 class="card-title"><%= raffle.title %></h5>
-                        <p class="card-text"><%= raffle.description %></p>
+                        <div class="row">
+                        <% raffle.tickets.only_owned(@user).each do |ticket| %>
+                           <div class="ticket ticket-on-hold">
+                           <div class="ticket-number text-center"> <%= ticket.number %> </div>
+                           </div>
+                        <% end %>
+                        </div>
                         <h5 class="card-text">Prêmio:</h5>
                         <h5 class="card-text"><%= raffle.prize %></h5>
                         <p><small class="text-muted">Categoria: <%= raffle.category.name %></small></p>
@@ -62,7 +68,7 @@
                               </div>
                               <div class="row">
                               <div class="d-flex justify-content-center ms-3 my-1">
-                                 <%= link_to 'Visualizar'.html_safe, raffles_path(raffle), :class => 'btn btn-action' %>
+                                 <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle.id), :class => 'btn btn-action' %>
                               </div>
                            </div>
                            </div>

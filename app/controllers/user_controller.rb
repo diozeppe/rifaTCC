@@ -37,7 +37,7 @@ class UserController < ApplicationController
 	    if @validation.empty?
 	    	@raffles = get_filters.page(params[:page])
 	    else
-	    	@raffles = Raffle.joins(:tickets).where(tickets: {user: @user}).page(params[:page])
+	    	@raffles = Raffle.only_active.has_ticket_owned_by_user(@user.id).page(params[:page])
 	    end
 	end
 
@@ -126,7 +126,7 @@ class UserController < ApplicationController
 	  end
 
 	  def get_filters
-	  	result = Raffle.joins(:tickets).where(tickets: {user: @user})
+	  	result = Raffle.only_active.has_ticket_owned_by_user(@user.id)
 
 	  	if params.key?(:category_id) && !params[:category_id].empty?
 	  		result = result.where('category_id = ? ', filter_pararms[:category_id].to_f)

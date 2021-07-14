@@ -1,12 +1,40 @@
 <div class="m-2">
-   <%= form_with url: institution_raffles_path, class: 'has-validation-return', local: true, method: :get, id: "raffle_filters" do |f| %>
+   <%= form_with url: tickets_user_path, class: 'has-validation-return', local: true, method: :get, id: "raffle_filters" do |f| %>
    <h5 class="text-center">Filtrar</h5>
    <label class="form-label mt-1 rmb-1">Categoria</label>
    <%= collection_select("", :category_id, Category.all, :id, :name, options = {include_blank: 'Todas', :selected => params[:category_id]}, html_options = {class: "form-select rounded-3"}) %>
    <label class="form-label mt-1 rmb-1">Condição</label>
    <%= collection_select("", :condition_id, Condition.all, :id, :name, options = {include_blank: 'Todas', :selected => params[:condition_id]}, html_options = {class: "form-select has-validation rounded-3"}) %>
-   <label class="form-label mt-1 rmb-1">Situação</label>
-   <%= collection_select("", :raffle_status_id, RaffleStatus.all, :id, :description, options = {include_blank: 'Todas', :selected => params[:raffle_status_id]}, html_options = {class: "form-select has-validation rounded-3"}) %>
+   <label class="form-label mt-1 rmb-1">Tipo de entrega</label>
+   <%= collection_select("", :delivery_type_id, DeliveryType.all, :id, :name, options = {include_blank: 'Todas', :selected => params[:delivery_type_id]}, html_options = {class: "form-select has-validation rounded-3"}) %>
+
+   <div class="row">
+      <div class="row">
+         <label class="form-label mt-1 rmb-1">Título</label>
+      </div>
+      <div class="input-group has-validation">
+         <%= f.text_field :title, value: params[:title], :class => 'form-control rounded-3' %>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="row">
+         <label class="form-label mt-1 rmb-1">Prêmio</label>
+      </div>
+         <div class="input-group has-validation">
+            <%= f.text_field :prize, value: params[:prize], :class => 'form-control rounded-3' %>
+         </div>
+   </div>
+
+   <div class="row">
+      <div class="row">
+         <label class="form-label mt-1 rmb-1">Instituição</label>
+      </div>
+         <div class="input-group has-validation">
+            <%= f.text_field :cnpj, value: params[:cnpj], :class => 'form-control rounded-3', "placeholder": "__.___.___/____-__", "data-mask": "00.000.000/0000-00" %>
+      </div>      
+   </div>
+
    <div class="row">
       <label class="form-label mt-1 rmb-1">Sorteio entre:</label>
       <div class="col-md-6">

@@ -102,8 +102,13 @@ GEM
     dropzonejs-rails (0.8.5)
       rails (> 3.1)
     erubi (1.10.0)
+    et-orbi (1.2.4)
+      tzinfo
     execjs (2.8.1)
     ffi (1.15.3)
+    fugit (1.5.0)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -156,6 +161,7 @@ GEM
     puma (3.12.6)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
+    raabro (1.4.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -199,6 +205,8 @@ GEM
       railties (>= 5.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
+    rufus-scheduler (3.7.0)
+      fugit (~> 1.1, >= 1.1.6)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -279,6 +287,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.0)
   rails-i18n
+  rufus-scheduler
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

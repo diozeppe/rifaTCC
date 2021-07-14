@@ -1,9 +1,10 @@
 class Raffle < ApplicationRecord
   scope :only_active, -> { where('raffle_status_id = ?', 1)}
+  scope :has_ticket_owned_by_user, -> (user_id) {joins(:tickets).where(tickets: {user: user_id}).distinct}
 
   belongs_to :institution
   has_many :tickets
-  has_one :winner_ticket
+  belongs_to :winner_ticket, :class_name => 'Ticket', optional: true
   has_many_attached :images
   belongs_to :category
   belongs_to :condition

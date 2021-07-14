@@ -23,6 +23,9 @@ gem 'devise'
 # Pundit Autorizacoes/Politica de uso
 gem 'pundit'
 
+# Cron process
+gem 'rufus-scheduler'
+
 # Jquery gem
 gem 'jquery-rails'
 gem 'jquery_mask_rails'

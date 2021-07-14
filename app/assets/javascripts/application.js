@@ -155,9 +155,13 @@ function addTicketOpen(id){
   e.setAttribute('data-selected', false);
 }
 
+function setSelectedArray(strArr){
+    sessionStorage.setItem('selected_tickets' + $('#session_id').val(), strArr);
+  }
+
 function getSelectedArray(){
   try{
-      var selected = sessionStorage.getItem('selected_tickets', '').split(';');
+      var selected = sessionStorage.getItem('selected_tickets' + $('#session_id').val(), '').split(';');
   }catch{
       var selected = [];
   }
@@ -187,7 +191,7 @@ function addTicketToList(id){
   e = document.querySelectorAll('[data-id="' + id + '"]')[0];
   selected.push(e.getAttribute('data-id'));
   for(var i = 0; i < selected.length; i++){if (selected[i] == ''){selected.splice(i, 1);}}
-  sessionStorage.setItem('selected_tickets', selected.join(';'));
+  setSelectedArray(selected.join(';'));
   $('#selected_tickets_hidden').val(selected.join(';'));
   showSelectedTickets();
   calculateFinalPrice();
@@ -198,7 +202,7 @@ function removeTicketFromList(id){
   e = document.querySelectorAll('[data-id="' + id + '"]')[0];
   for(var i = 0; i < selected.length; i++){if (selected[i] === e.getAttribute('data-id')){selected.splice(i, 1);}}
     for(var i = 0; i < selected.length; i++){if (selected[i] == ''){selected.splice(i, 1);}}
-  sessionStorage.setItem('selected_tickets', selected.join(';'));
+  setSelectedArray(selected.join(';'));
   $('#selected_tickets_hidden').val(selected.join(';'));
   showSelectedTickets();
   calculateFinalPrice();
@@ -216,7 +220,7 @@ function doTicketInitialization(){
     var objResponse = data.detail[0];
 
     $('#selected_tickets_hidden').val(objResponse.newTicketList);
-    sessionStorage.setItem('selected_tickets', objResponse.newTicketList);
+    setSelectedArray(objResponse.newTicketList);
     showSelectedTickets();
     calculateFinalPrice();
 

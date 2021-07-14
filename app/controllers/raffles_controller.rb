@@ -1,6 +1,6 @@
 class RafflesController < ApplicationController
 	before_action :set_user
-	before_action :set_raffle, only: [:show, :buy, :check_tickets, :checkout]
+	before_action :set_raffle, only: [:show, :buy, :check_tickets, :checkout, :cancel, :finish]
 
 	def index
 	  @validation = validate_filters
@@ -17,7 +17,7 @@ class RafflesController < ApplicationController
 	end
 
 	def buy
-	  @tickets = @raffle.tickets.only_owned(@user)
+	  @tickets = @raffle.tickets.only_owned_on_hold(@user)
 
 	  if (!@tickets.empty?)
 	  	redirect_to raffles_checkout_path(@raffle)
@@ -95,7 +95,41 @@ class RafflesController < ApplicationController
 	end
 
 	def checkout
+		@tickets = @raffle.tickets.only_owned_on_hold(@user)
+	end
 
+	def cancel
+		#
+		# Atualiza status do ticket
+		#
+		@tickets = @raffle.tickets.only_owned_on_hold(@user)
+
+		@tickets.each do |t|
+			t.ticket_status_id = 1
+			t.save()
+		end
+
+		redirect_to raffles_buy_path(@raffle)
+	end
+
+	def finish
+		#
+		# Atualiza status do ticket
+		#
+		@tickets = @raffle.tickets.only_owned_on_hold(@user)
+
+		@tickets.each do |t|
+			t.ticket_status_id = 3
+			t.save()
+		end
+
+		#
+		# Atualiza unidades vendidas da rifa
+		#
+		@raffle.tickets_sold += @tickets.length
+		@raffle.save()
+
+		redirect_to tickets_user_path
 	end
 
 	private

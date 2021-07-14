@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<div id="checkout_wrap" class="default-border">
+			<div class="row">
+				<p class="text-center">Confirmar compra</p>
+				<p class="text-center"><%= @raffle.title %></p>
+				<p class="text-center"><%= @raffle.prize %></p>
+			</div>
+			<div class="row">
+				<div class="d-flex justify-content-center">
+				<% @tickets.each do |ticket| %>
+					<div class="ticket ticket-on-hold">
+					<div class="ticket-number text-center"> <%= ticket.number %> </div>
+					</div>
+				<% end %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="ms-1 mb-1">
+					<%= link_to 'Cancelar', raffles_cancel_path(@raffle), class: "btn btn-submit-adm" %>
+				</div>
+				</div>
+				<div class="col-md-6">
+					<div class="me-1">
+					<%= link_to 'Comprar', raffles_finish_path(@raffle), class: "btn btn-submit-adm"%>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
