@@ -166,6 +166,7 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack-timeout (0.6.0)
     rails (6.1.3.2)
       actioncable (= 6.1.3.2)
       actionmailbox (= 6.1.3.2)
@@ -285,6 +286,7 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   pundit
+  rack-timeout
   rails (~> 6.0)
   rails-i18n
   rufus-scheduler
