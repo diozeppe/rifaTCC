@@ -162,7 +162,7 @@ function setSelectedArray(strArr){
 function getSelectedArray(){
   try{
       var selected = sessionStorage.getItem('selected_tickets' + $('#session_id').val(), '').split(';');
-  }catch{
+  }catch (e){
       var selected = [];
   }
 
