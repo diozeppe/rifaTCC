@@ -21,9 +21,8 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: rifaAmigaDB
+  database: d52f45s1bt2el0
   username: smhqzzjndkbekp
   password: "20ff0e8edadfc602e38efc9506014b98209534a85e210f33223fd3f2c84a65b2"
   host: 1ec2-54-204-39-43.compute-1.amazonaws.com
   port: 5432
-  database: d52f45s1bt2el0
