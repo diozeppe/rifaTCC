@@ -24,7 +24,9 @@ class Institutions::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # The path used after confirmation.
-  # def after_confirmation_path_for(resource_name, resource)
-  #   super(resource_name, resource)
-  # end
+  # The path used after confirmation.
+  def after_confirmation_path_for(resource_name, resource)
+    sign_in(resource)
+    redirect_to profile_institution_path(resource)
+  end
 end

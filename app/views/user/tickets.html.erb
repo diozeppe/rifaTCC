@@ -70,8 +70,16 @@
                                  <h5 class="text-center"> <%= raffle.draw_date.strftime('%d/%m/%Y') %> </h5>
                               </div>
                               </div>
+                              <% if !raffle.winner_ticket.nil? %>
                               <div class="row">
-                              <div class="d-flex justify-content-center ms-3 my-1">
+                                 <h5 class="text-center">Número vencedor:</h5>
+                                 <div class="d-flex justify-content-center">
+                                 <div class="ticket ticket-on-hold"><div class="ticket-number text-center"> <%= raffle.winner_ticket.number %> </div></div>
+                                 </div>
+                              </div>
+                              <% end %>
+                              <div class="row">
+                              <div class="d-flex justify-content-center ms-1 my-1">
                                  <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle.id), :class => 'btn btn-action' %>
                               </div>
                            </div>

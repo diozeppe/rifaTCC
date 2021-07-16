@@ -82,7 +82,7 @@
 
 	<%= f.label :zipCode, "CEP", class: "form-label mt-1 rmb-1" %>
 	<div class="input-group has-validation">
-		<%= f.text_field :zipCode, :class => 'form-control rounded-3', "data-mask": "00000-000" %>
+		<%= f.text_field :zipCode, :class => 'form-control rounded-3', "data-mask": "00000-000", "placeholder": "000000-000" %>
 		<div id="zipCode_feedback" class="invalid-feedback"></div>
 	</div>
 
@@ -101,7 +101,7 @@
 	<div class="col-md-6">
 		<%= f.label :phone_number, "Telefone", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
-			<%= f.text_field :phone_number, :class => 'form-control rounded-3', "data-mask": "(00) 0000-0000#" %>
+			<%= f.text_field :phone_number, :class => 'form-control rounded-3', "data-mask": "(00) 0000-0000#", "placeholder": "(00) 0000-00000" %>
 			<div id="phone_number_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>
@@ -109,7 +109,7 @@
 	<div class="col-md-6">
 		<%= f.label :cellphone_number, "Celular", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
-			<%= f.text_field :cellphone_number, :class => 'form-control rounded-3', "data-mask": "(00) 0000-0000#" %>
+			<%= f.text_field :cellphone_number, :class => 'form-control rounded-3', "data-mask": "(00) 0000-0000#", "placeholder": "(00) 0000-00000" %>
 			<div id="cellphone_number_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>

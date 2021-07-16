@@ -11,7 +11,6 @@
     <% if user_signed_in? %>
        <a class="list-group-item list-group-item-action text-center <%= is_active_action('profile')%>" href=<%= profile_user_path %>>Meu perfil</a>
        <a class="list-group-item list-group-item-action text-center <%= is_active_action('tickets')%>" href=<%= tickets_user_path %>>Minhas compras</a>
-       <a class="list-group-item list-group-item-action text-center <%= is_active('withdraw')%>" href="<%= %>">Histórico</a>
     <% end %>
   </div>
 </div>

@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :tickets
 
   devise :database_authenticatable,
-         :registerable, 
+         :registerable,
+         :confirmable,
          :recoverable, 
          :rememberable, 
          :trackable,

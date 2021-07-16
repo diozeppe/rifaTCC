@@ -15,7 +15,7 @@ gem 'rails', '~> 6.0'
 gem 'rails-i18n'
 
 # Validador de cpf/cnpj
-gem "cpf_cnpj"
+gem 'cpf_cnpj'
 
 # Devise Gem para autenticacao
 gem 'devise'
@@ -27,7 +27,11 @@ gem 'pundit'
 gem 'rufus-scheduler'
 
 # Set timeout to requests
-gem "rack-timeout"
+gem 'rack-timeout'
+
+# Para pegar emais em dev
+
+gem 'mailcatcher'
 
 # Jquery gem
 gem 'jquery-rails'
@@ -41,7 +45,7 @@ gem 'chart-js-rails'
 gem 'dropzonejs-rails'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma'
 
 # Icones Material Design
 gem 'material_icons'

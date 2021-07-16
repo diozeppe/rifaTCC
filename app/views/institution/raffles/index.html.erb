@@ -57,10 +57,18 @@
                         <div class="col-md-12">
                            <h5 class="text-center"><%= raffle.tickets_sold.to_s + '/' + raffle.tickets_number.to_s %></h5>
                         </div>
+                        <% if !raffle.winner_ticket.nil? %>
+                        <div class="row">
+                           <h5 class="text-center">Número vencedor:</h5>
+                           <div class="d-flex justify-content-center">
+                           <div class="ticket ticket-on-hold"><div class="ticket-number text-center"> <%= raffle.winner_ticket.number %> </div></div>
+                           </div>
+                        </div>
+                        <% end %>
                         <div class="row">
                            <div class="col-md-12">
                               <div class="d-flex justify-content-center">
-                                 <%= link_to 'Visualizar'.html_safe, institution_raffle_path(raffle), :class => 'btn btn-action mb-2 ms-4' %>
+                                 <%= link_to 'Visualizar'.html_safe, institution_raffle_path(raffle), :class => 'btn btn-action mb-2 ms-1' %>
                               </div>
                            </div>
                         </div>

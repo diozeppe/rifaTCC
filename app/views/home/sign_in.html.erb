@@ -36,6 +36,12 @@
         <%= link_to 'Cadastrar', new_user_registration_path, method: :get, class: "link-secondary ms-auto pe-2" %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-10 d-flex">
+      <%= link_to 'Esqueci minha senha', new_user_password_path, method: :get, class: "link-secondary ms-auto pe-2" %>
+      </div>
+    </div>
 
     <div class="row" style="margin-top: 1rem;">
       <div class="col-md-2"></div>
@@ -79,6 +85,12 @@
       </div>
       <div class="col-md-10 d-flex">
         <%= link_to 'Solicitar Cadastro', new_institution_registration_path, method: :get, class: "link-warning ms-auto pe-2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-10 d-flex">
+      <%= link_to 'Esqueci minha senha', new_institution_password_path, method: :get, class: "link-warning ms-auto pe-2" %>
       </div>
     </div>
 

@@ -5,6 +5,7 @@ class Institution < ApplicationRecord
 
   devise :database_authenticatable,
          :registerable, 
+         :confirmable,
          :recoverable, 
          :rememberable, 
          :trackable,

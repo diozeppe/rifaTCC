@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   #match "raffles/:id/checkout" => "raffles#checkout", as: :raffles_checkout, via: [:get, :post]
 
+  match "user/sign_in" => "home#log_in", via: [:get, :post]
+  match "institution/sign_in" => "home#log_in", via: [:get, :post]
 
   #
   # User acess routes
@@ -82,15 +84,15 @@ Rails.application.routes.draw do
   #
   # Devise for Admin Authentication
   #
-  devise_for :admins, path: 'admin', controllers: {sessions: "admin/sessions", passwords: "admin/passwords", registrations: "admin/registrations"}
+  devise_for :admins, path: 'admin', controllers: {sessions: "admin/sessions"}
 
   #
   # Devise for Users Authentication
   #
-  devise_for :users, path: 'user', controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: "users/registrations"}
+  devise_for :users, path: 'user', controllers: { sessions: "users/sessions", passwords: "users/passwords", registrations: "users/registrations", confirmations: 'users/confirmations'}
 
   #
   # Devise for Institutions Authentication
   #
-  devise_for :institutions, path: 'institution', controllers: { sessions: "institutions/sessions", passwords: "institutions/passwords", registrations: "institutions/registrations"}
+  devise_for :institutions, path: 'institution', controllers: { sessions: "institutions/sessions", passwords: "institutions/passwords", registrations: "institutions/registrations", confirmations: 'institutions/confirmations'}
 end

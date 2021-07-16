@@ -44,6 +44,8 @@ class InstitutionController < ApplicationController
 		params[:institution][:zipCode] = params[:institution][:zipCode].tr('^0-9', '')
 		params[:institution][:phone_number] = params[:institution][:phone_number].tr('^0-9', '')
 		params[:institution][:phone_number2] = params[:institution][:phone_number2].tr('^0-9', '')
+		params[:institution][:agency_number] = params[:institution][:agency_number].tr('^0-9', '')
+		params[:institution][:account_number] = params[:institution][:account_number].tr('^0-9', '')
 	end
 
 	def institution_params

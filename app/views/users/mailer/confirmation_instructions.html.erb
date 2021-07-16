@@ -1,5 +1,12 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<div class="container-fluid">
+	<div class="row">
+		<%= image_tag("logo.png", width: 70, height: 70) %>
+	</div>
+	<div class="row">
+		<h1 class="text-center">Bem-vindo a Rifa Amiga</h1>
+		<p>Para garantir seu acesso precisamos confirmar seu e-mail</p>
+		<p>Utilize o link abaixo para confirmar</p>
+		<p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, confirmation_token: @token) %></p>
+		<p>Caso você não tenha solicitado nenhum cadastro, ignore esse e-mail</p>
+	</div>
+</div>
