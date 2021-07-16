@@ -29,10 +29,6 @@ gem 'rufus-scheduler'
 # Set timeout to requests
 gem 'rack-timeout'
 
-# Para pegar emais em dev
-
-gem 'mailcatcher'
-
 # Jquery gem
 gem 'jquery-rails'
 gem 'jquery_mask_rails'
@@ -83,6 +79,10 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+
+  # Para pegar emais em dev
+  
+  gem 'mailcatcher'
 end
 
 group :development do
