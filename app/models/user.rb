@@ -36,6 +36,14 @@ class User < ApplicationRecord
   validates :zipCode, presence: true, 
                       length: { maximum: 8 }
 
+  def cep_formated
+    self.zipCode[0..4] + '-' + self.zipCode[5..8]
+  end
+
+  def get_address_formated
+    self.address + ', ' + self.number + ' - ' + self.neighborhood + ', ' + self.city + ' - ' + self.state + ', ' + self.cep_formated
+  end
+
   private
 
   def cpf_valid?

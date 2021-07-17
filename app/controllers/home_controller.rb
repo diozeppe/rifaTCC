@@ -51,10 +51,6 @@ class HomeController < ApplicationController
 		end 
 	end
 
-	def forgot_password
-		
-	end
-
 	private
 
 	def login_params

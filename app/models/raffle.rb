@@ -44,7 +44,7 @@ class Raffle < ApplicationRecord
     errors.add(:draw_date, 'Data inválida') if (draw_date.nil?)
 
     if (!draw_date.nil?)
-      errors.add(:draw_date, 'Data deve ser futura') if (draw_date < Date.current)
+      errors.add(:draw_date, 'Data deve ser futura') if (draw_date < Date.current && raffle_status_id == 1)
     end
   end
 

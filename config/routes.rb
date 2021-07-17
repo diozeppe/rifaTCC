@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resource :user, only: [:destroy, :show, :update, :edit], controller: 'user' do
     get 'profile'
     get 'tickets'
+    get ':id/confirm_received', to: 'user#confirm_received', as: 'confirm_received'
   end
 
 
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
 
   resource :institution, only: [:destroy, :show, :update, :edit], controller: 'institution' do
     get 'profile'
+    get ':id/confirm_sended', to: 'institution#confirm_sended', as: 'confirm_sended'
   end
 
   namespace :institution do

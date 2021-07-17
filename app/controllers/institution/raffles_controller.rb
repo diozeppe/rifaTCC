@@ -1,8 +1,9 @@
 class Institution::RafflesController < ApplicationController
+	before_action :set_institution
 	before_action :set_raffle, only: [:edit, :update, :show, :destroy]
 
 	def index
-	  @institution = pundit_user
+	  authorize @institution, policy_class: RafflePolicy
 
 	  @validation = validate_filters
 
@@ -14,6 +15,7 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def new
+	  authorize @institution, policy_class: RafflePolicy
 	  @raffle = Raffle.new
 	end
 
@@ -22,6 +24,8 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def create
+	  authorize @institution, policy_class: RafflePolicy
+
 	  @raffle = Raffle.new(raffle_params)
 
 	  authorize @raffle, policy_class: RafflePolicy
@@ -60,9 +64,8 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def destroy
-	  
 	  @raffle.destroy
-	  flash[:danger] = "Usuario deletado com sucesso"
+	  flash[:danger] = "Rifa deletada com sucesso"
 	  redirect_to raffles_path
 	end
 
@@ -70,6 +73,10 @@ class Institution::RafflesController < ApplicationController
 
 	  def set_raffle
 	  	@raffle = Raffle.find(params[:id])
+	  end
+
+	  def set_institution
+	  	@institution = pundit_user
 	  end
 
 	  def raffle_params

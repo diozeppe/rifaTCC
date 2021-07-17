@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
+	protect_from_forgery with: :exception
 	include Pundit
 
-	protect_from_forgery with: :exception
+	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
 	def after_sign_in_path_for(resource)
 		if resource.instance_of? Admin
@@ -23,5 +24,11 @@ class ApplicationController < ActionController::Base
 		else
 			nil
 		end
+	end
+
+	private
+
+	def user_not_authorized
+		redirect_to root_path
 	end
 end

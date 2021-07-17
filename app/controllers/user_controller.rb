@@ -48,6 +48,17 @@ class UserController < ApplicationController
 		authorize @user
 	end
 
+	def confirm_received
+		@raffle = Raffle.find(params[:id])
+
+		authorize @raffle, policy_class: RafflePolicy
+
+		@raffle.raffle_status_id = 4 # Define como aguardando saque
+		@raffle.save()
+
+		redirect_to tickets_user_path
+	end
+
 	private
 
 	def set_user

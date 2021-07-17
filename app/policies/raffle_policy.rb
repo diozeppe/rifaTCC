@@ -7,22 +7,78 @@ class RafflePolicy < ApplicationPolicy
   end
 
   def index?
-    if user.instance_of? Admin
-      return true
+    if (controller_name = 'institution/raffles')
+      if @user.instance_of? Institution # E um instituicao
+        if @user = @record
+          return true
+        else
+          return false
+        end
+      else
+        return false
+      end
     end
-
-    false
+    return true
   end
 
   def show?
     false
   end
 
+  def buy?
+    if @user.instance_of? User # e admin?
+      if @user == @record
+        return true
+      end
+    end
+    return false
+  end
+
+  def check_tickets?
+    buy?
+  end
+
+  def checkout?
+    buy?
+  end
+
+  def cancel?
+    buy?
+  end
+
+  def finish?
+    buy?
+  end
+
+ #
+ # Apenas o usuario confirma o recebimento
+ #
+ def confirm_received?
+    if @user.instance_of? User 
+      if user == record.winner_ticket.user
+        return true
+      end
+    end
+    return false
+  end
+
+ #
+ # Apenas a instituição confirma o envio
+ #
+ def confirm_sended?
+    if @user.instance_of? Institution 
+      if user == record.institution
+        return true
+      end
+    end
+    return false
+  end
+
   def create?
-    if user.instance_of? Admin # e admin?
+    if @user.instance_of? Admin # e admin?
       return true
-    elsif user.instance_of? Institution # E um instituicao
-      if record.institution = user # A rifa pertence a intituicao logada
+    elsif @user.instance_of? Institution # E um instituicao
+      if record.institution = @user # A rifa pertence a intituicao logada
         return true
       end
     end
@@ -34,10 +90,10 @@ class RafflePolicy < ApplicationPolicy
   end
 
   def update?
-    if user.instance_of? Admin
+    if @user.instance_of? Admin # e admin?
       return true
-    elsif user.instance_of? Institution 
-      if user = record.institution
+    elsif @user.instance_of? Institution # E um instituicao
+      if record.institution = user # A rifa pertence a intituicao logada
         return true
       end
     end
@@ -49,14 +105,13 @@ class RafflePolicy < ApplicationPolicy
   end
 
   def destroy?
-    if user.instance_of? Admin
+    if @user.instance_of? Admin # e admin?
       return true
-    elsif user.instance_of? Institution
-      if user = record.institution
+    elsif @user.instance_of? Institution # E um instituicao
+      if record.institution = user # A rifa pertence a intituicao logada
         return true
       end
     end
-
     false
   end
 

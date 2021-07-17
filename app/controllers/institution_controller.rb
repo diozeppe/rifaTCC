@@ -6,16 +6,8 @@ class InstitutionController < ApplicationController
 		authorize @institution, policy_class: InstitutionPolicy
 	end
 
-	def show
-		
-	end
-
-	def edit
-		authorize Institution
-	end
-
 	def update
-		authorize @institution
+		authorize @institution, policy_class: InstitutionPolicy
 
 		# Remove a senha caso o usuario nao informou uma nova
 		if params[:institution][:password] == '' && params[:institution][:password_confirmation] == ''
@@ -32,6 +24,20 @@ class InstitutionController < ApplicationController
 			format.html {render 'edit'}
 			end
 		end	
+	end
+
+	def confirm_sended
+		@raffle = Raffle.find(params[:id])
+
+		authorize @raffle, policy_class: RafflePolicy
+
+
+		@raffle.raffle_status_id = 3 # Define como aguardando recebimento
+		@raffle.save()
+
+		puts @raffle.errors.full_messages
+
+		redirect_to institution_raffles_path
 	end
 
 	private

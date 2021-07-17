@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   # Admin only actions
   #
   def index?
-    if user.instance_of? Admin
+    if @user.instance_of? Admin
       return true
     end
 
@@ -18,7 +18,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    if user.instance_of? Admin
+    if @user.instance_of? Admin
       return true
     end
 
@@ -29,9 +29,9 @@ class UserPolicy < ApplicationPolicy
   # Shared actions
   #
   def show?
-    if user.instance_of? Admin
+    if @user.instance_of? Admin
       return true
-    elsif user.instance_of? User 
+    elsif @user.instance_of? User 
       if @user == @record
         return true
       end
@@ -41,13 +41,13 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    if user.instance_of? Admin
+    if @user.instance_of? Admin
       return true
-    elsif user.instance_of? User 
+    elsif @user.instance_of? User 
       return true
     end
     false
-  end
+  end 
 
   def edit?
     update?
@@ -57,7 +57,7 @@ class UserPolicy < ApplicationPolicy
   # User only actions
   #
   def profile?
-    if user.instance_of? User 
+    if @user.instance_of? User 
       if @user == @record
         return true
       end
@@ -65,7 +65,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def tickets?
-    if user.instance_of? User 
+    if @user.instance_of? User 
       if @user == @record
         return true
       end

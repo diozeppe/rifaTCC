@@ -17,6 +17,8 @@ class RafflesController < ApplicationController
 	end
 
 	def buy
+	  authorize @user, policy_class: RafflePolicy
+
 	  @tickets = @raffle.tickets.only_owned_on_hold(@user)
 
 	  if (!@tickets.empty?)
@@ -27,6 +29,8 @@ class RafflesController < ApplicationController
 	end
 
 	def check_tickets
+		authorize @user, policy_class: RafflePolicy
+
 		#
 		# Lista de numeros a serem verificados
 		#
@@ -95,10 +99,13 @@ class RafflesController < ApplicationController
 	end
 
 	def checkout
+		authorize @user, policy_class: RafflePolicy
 		@tickets = @raffle.tickets.only_owned_on_hold(@user)
 	end
 
 	def cancel
+		authorize @user, policy_class: RafflePolicy
+
 		#
 		# Atualiza status do ticket
 		#
@@ -113,6 +120,8 @@ class RafflesController < ApplicationController
 	end
 
 	def finish
+		authorize @user, policy_class: RafflePolicy
+		
 		#
 		# Atualiza status do ticket
 		#

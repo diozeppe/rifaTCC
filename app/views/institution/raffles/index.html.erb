@@ -1,95 +1,101 @@
 <div class="row">
    <div id="sidebar_wrap" class="col-md-3">
       <div class="row">
-      <%= render 'layouts/navigation/sidebar_menu' %>
-   </div>
+         <%= render 'layouts/navigation/sidebar_menu' %>
+      </div>
       <div class="row">
-      <%= render 'layouts/navigation/sidebar_menu_filters' %>
+         <%= render 'layouts/navigation/sidebar_menu_filters' %>
       </div>
    </div>
    <div class="col-md-8">
       <div class="row">
-            <h1 class="text-center">Minhas Rifas</h1>
+         <h1 class="text-center">Minhas Rifas</h1>
       </div>
       <div class="row">
          <div class="col-md-3">
-         <%= link_to 'Nova Rifa', new_institution_raffle_path, :class => 'btn btn-action mt-3' %>
+            <%= link_to 'Nova Rifa', new_institution_raffle_path, :class => 'btn btn-action mt-3' %>
          </div>
       </div>
       <div class="row">
-      <div id="intitution-raffles-list" class="pt-3">
-         <% @raffles.each do |raffle| %>
-         <div class="card my-2">
-            <div class="raffle-card">
-               <div class="row g-0">
-                  <div class="col-md-3">
-                     <div class="card-image">
-                     <% if raffle.images.attached? %>
-                        <img src="url_for(raffle.images.first)", class="img-fluid rounded">
-                     <% else %>
-                        <%= image_tag("placeholder-image.jpg", class: "img-fluid rounded") %>
-                     <% end %>
-                     </div>
-                  </div>
-                  <div class="col-md-5">
-                     <div class="card-body">
-                        <h5 class="card-title"><%= raffle.title %></h5>
-                        <p class="card-text"><%= raffle.description %></p>
-                        <p class="card-text"><small>Situação: <%= raffle.raffle_status.description %></small></p>
-                        <p class="card-text"><small>Categoria: <%= raffle.category.name %></small></p>
-                        <p class="card-text"><small class="text-muted">Data do sorteio: <%= raffle.draw_date.strftime('%d/%m/%Y') %></small></p>
-                        <% if !raffle.winner_ticket.nil? %>
-                        <h5 class="card-title">Informações do vencedor</h5>
-                        <p class="card-text">Nome: <%= raffle.winner_ticket.user.name %></p>
-                        <p class="card-text">E-mail:<%= raffle.winner_ticket.user.email %></p>
-                        <p class="card-text">Telefone: <%= raffle.winner_ticket.user.phone_number %></p>
-                        <p class="card-text">Endereço: <%= raffle.winner_ticket.user.address + ', ' + raffle.winner_ticket.user.number + ' - ' + raffle.winner_ticket.user.neighborhood %></p>
-                        <% end %>
-                     </div>
-                  </div>
-                  <div class="col-md-4">
-                     <div class="row">
-                        <div class="col-md-12">
-                           <h5 class="text-center">Progresso</h5>
+         <div id="intitution-raffles-list" class="pt-3">
+            <% @raffles.each do |raffle| %>
+            <div class="card my-2">
+               <div class="raffle-card">
+                  <div class="row g-0">
+                     <div class="col-md-3">
+                        <div class="card-image">
+                           <% if raffle.images.attached? %>
+                           <img src="url_for(raffle.images.first)", class="img-fluid rounded">
+                           <% else %>
+                           <%= image_tag("placeholder-image.jpg", class: "img-fluid rounded") %>
+                           <% end %>
                         </div>
                      </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <div class="d-flex justify-content-center">
-                              <canvas class="raffleProgessChart" data-tickets-sold = "<%= raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (raffle.tickets_number - 0).to_s %>" style="width: 500px;"></canvas>
-                           </div>
+                     <div class="col-md-5">
+                        <div class="card-body">
+                           <h5 class="card-title"><%= raffle.title %></h5>
+                           <p class="card-text"><%= raffle.description %></p>
+                           <p class="card-text"><small>Situação: <%= raffle.raffle_status.description %></small></p>
+                           <p class="card-text"><small>Categoria: <%= raffle.category.name %></small></p>
+                           <p class="card-text"><small class="text-muted">Data do sorteio: <%= raffle.draw_date.strftime('%d/%m/%Y') %></small></p>
+                           <% if !raffle.winner_ticket.nil? %>
+                           <h5 class="card-title">Informações do vencedor</h5>
+                           <p class="card-text">Nome: <%= raffle.winner_ticket.user.name %></p>
+                           <p class="card-text">E-mail: <%= raffle.winner_ticket.user.email %></p>
+                           <p class="card-text">Telefone: <%= raffle.winner_ticket.user.phone_number  %></p>
+                           <p class="card-text">Endereço: <%= raffle.winner_ticket.user.get_address_formated %></p>
+                           <% end %>
                         </div>
                      </div>
-                     <div class="row">
-                        <div class="col-md-12">
-                           <h5 class="text-center"><%= raffle.tickets_sold.to_s + '/' + raffle.tickets_number.to_s %></h5>
-                        </div>
-                        <% if !raffle.winner_ticket.nil? %>
+                     <div class="col-md-4">
                         <div class="row">
-                           <h5 class="text-center">Número vencedor:</h5>
-                           <div class="d-flex justify-content-center">
-                           <div class="ticket ticket-on-hold"><div class="ticket-number text-center"> <%= raffle.winner_ticket.number %> </div></div>
+                           <div class="col-md-12">
+                              <h5 class="text-center">Progresso</h5>
                            </div>
                         </div>
-                        <% end %>
                         <div class="row">
                            <div class="col-md-12">
                               <div class="d-flex justify-content-center">
-                                 <%= link_to 'Visualizar'.html_safe, institution_raffle_path(raffle), :class => 'btn btn-action mb-2 ms-1' %>
+                                 <canvas class="raffleProgessChart" data-tickets-sold = "<%= raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (raffle.tickets_number - 0).to_s %>" style="width: 500px;"></canvas>
                               </div>
                            </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-12">
+                              <h5 class="text-center"><%= raffle.tickets_sold.to_s + '/' + raffle.tickets_number.to_s %></h5>
+                           </div>
+                           <% if !raffle.winner_ticket.nil? %>
+                           <div class="row">
+                              <h5 class="text-center">Número vencedor:</h5>
+                              <div class="d-flex justify-content-center">
+                                 <div class="ticket ticket-on-hold">
+                                    <div class="ticket-number text-center"> <%= raffle.winner_ticket.number %> </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <% end %>
+                           <div class="row">
+                              <div class="d-flex justify-content-center">
+                                 <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle), :class => 'btn btn-submit-adm' %>
+                              </div>
+                           </div>
+                           <% if !raffle.winner_ticket.nil? && raffle.raffle_status_id == 2 %>
+                           <div class="row">
+                              <div class="d-flex justify-content-center mt-1">
+                                 <%= link_to 'Confirmar envio', confirm_sended_institution_path(raffle.id), :class => 'btn btn-submit-adm' %>
+                              </div>
+                           </div>
+                           <% end %>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
+            <% end %>
          </div>
-         <% end %>
+         <div align="center">
+            <%= paginate @raffles %>
+         </div>
       </div>
-      <div align="center">
-         <%= paginate @raffles %>
-      </div>
-  </div>
    </div>
-</div>
 </div>

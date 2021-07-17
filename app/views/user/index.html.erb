@@ -48,7 +48,7 @@
 			<tr>
 				<td><%= user.name %></td>
 				<td><%= CPF.new(user.cpf).formatted %></td>
-				<td><%= number_to_phone(user.ddd_phone + user.phone_number, area_code: true, pattern: /(\d{2})(\d{4})(\d{4})$/)  %></td>
+				<td><%= number_to_phone(user.phone_number, pattern: /(\d{2})(\d{4})(\d{4})$/)  %></td>
 				<td><%= user.address %></td>
 				<td><%= user.number %></td>
 				<td><%= user.created_at %></td>
