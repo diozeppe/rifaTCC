@@ -17,7 +17,7 @@
                      <div class="col-md-3">
                         <div class="card-image">
                            <% if raffle.images.attached? %>
-                           <img src="<%=url_for(raffle.images.first) %>", class="img-fluid rounded">
+                           <%= image_tag(raffle.images.first, class: 'img-fluid rounded') %>
                            <% else %>
                            <%= image_tag("placeholder-image.jpg", class: "img-fluid rounded") %>
                            <% end %>
