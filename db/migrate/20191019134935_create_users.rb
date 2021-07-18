@@ -10,10 +10,10 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     	t.string :complement
     	t.string :neighborhood
     	t.string :zipCode
-    	t.string :ddd_phone
     	t.string :phone_number
-    	t.string :ddd_cellphone
     	t.string :cellphone_number
+      t.string  :city
+      t.string  :state
     	t.integer :city_id
 
       ## Recoverable

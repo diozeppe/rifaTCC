@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_003945) do
+ActiveRecord::Schema.define(version: 2021_07_10_204434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,16 +97,16 @@ ActiveRecord::Schema.define(version: 2021_07_16_003945) do
     t.string "neighborhood"
     t.string "zipCode"
     t.integer "city_id"
-    t.string "ddd_phone"
     t.string "phone_number"
-    t.string "ddd_phone2"
     t.string "phone_number2"
     t.integer "bank_number"
     t.integer "agency_number"
     t.integer "account_number"
     t.string "qualification"
+    t.string "city"
+    t.string "state"
+    t.string "site"
     t.text "about"
-    t.float "rating"
     t.boolean "status", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -122,8 +122,6 @@ ActiveRecord::Schema.define(version: 2021_07_16_003945) do
     t.string "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "city"
-    t.string "state"
   end
 
   create_table "raffle_statuses", force: :cascade do |t|
@@ -192,10 +190,10 @@ ActiveRecord::Schema.define(version: 2021_07_16_003945) do
     t.string "complement"
     t.string "neighborhood"
     t.string "zipCode"
-    t.string "ddd_phone"
     t.string "phone_number"
-    t.string "ddd_cellphone"
     t.string "cellphone_number"
+    t.string "city"
+    t.string "state"
     t.integer "city_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -211,8 +209,6 @@ ActiveRecord::Schema.define(version: 2021_07_16_003945) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city"
-    t.string "state"
   end
 
   create_table "wallets", force: :cascade do |t|

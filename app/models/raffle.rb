@@ -1,4 +1,6 @@
 class Raffle < ApplicationRecord
+  paginates_per 10
+
   scope :only_active, -> { where('raffle_status_id = ?', 1)}
   scope :has_ticket_owned_by_user, -> (user_id) {joins(:tickets).where(tickets: {user: user_id}).distinct}
 
@@ -14,24 +16,24 @@ class Raffle < ApplicationRecord
   validates :title, presence: true,
                     length: {
                       minimum: 10,
-                      maximum: 100
+                      maximum: 200
                     }
 
   validates :description, presence: true,
                           length: { minimum: 10,
-                                    maximum: 500 
+                                    maximum: 10000 
                                   }
 
   validates :prize,  presence: true,
                      length: {
                               minimum: 10,
-                              maximum: 30
+                              maximum: 200
                             }
 
   validates :prize_description,  presence: true,
                      length: {
                               minimum: 10,
-                              maximum: 200
+                              maximum: 10000
                             }
 
   validates :unit_value,  presence: true

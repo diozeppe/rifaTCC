@@ -1,4 +1,6 @@
 class Institution < ApplicationRecord
+  paginates_per 10
+  
   has_many :raffles
 
   before_save { self.email = email.downcase }
@@ -42,7 +44,7 @@ class Institution < ApplicationRecord
 
   def cnpj_valid?
     if !(CNPJ.new(self.cnpj).valid?)
-      errors.add(:cnpj, "CPF invalido")
+      errors.add(:cnpj, "CNPJ invalido")
     end
   end
 

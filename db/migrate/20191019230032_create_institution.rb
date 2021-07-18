@@ -12,16 +12,16 @@ class CreateInstitution < ActiveRecord::Migration[5.1]
         t.string  :neighborhood
         t.string  :zipCode
         t.integer :city_id
-        t.string  :ddd_phone
         t.string  :phone_number
-        t.string  :ddd_phone2
         t.string  :phone_number2
         t.integer :bank_number
         t.integer :agency_number
         t.integer :account_number
     	  t.string  :qualification
+        t.string  :city
+        t.string  :state
+        t.string  :site
         t.text    :about
-        t.float   :rating
         t.boolean :status, default: false
 
         ## Recoverable

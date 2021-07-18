@@ -136,6 +136,110 @@ CSV.foreach(File.join(Rails.root, 'app', 'assets', 'raffle.csv'), {headers: true
 end
 
 #
+# Attach imgaes
+#
+r = Raffle.find(1)
+
+fd = 'peugeot'
+fl = 'pejo'
+
+for i in 1..4 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(2)
+
+fd = 'apartamento'
+fl = 'ap'
+
+for i in 1..4 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(3)
+
+fd = 'cadeira_gamer'
+fl = 'cadeira_gamer'
+
+for i in 1..3 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(4)
+
+fd = 'fogão'
+fl = 'fogao'
+
+for i in 1..2 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(5)
+
+fd = 'fritadeira'
+fl = 'fritadeira'
+
+for i in 1..3 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+
+r = Raffle.find(6)
+
+fd = 'geladeira'
+fl = 'geladeira'
+
+for i in 1..2 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(7)
+
+fd = 'lavadeira'
+fl = 'lavadeira'
+
+for i in 1..2 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(8)
+
+fd = 'liquidificador'
+fl = 'liquidificador'
+
+for i in 1..2 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(9)
+
+fd = 'maquina de costura'
+fl = 'costura'
+
+for i in 1..2 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(10)
+
+fd = 'motorola'
+fl = 'morotola_g10'
+
+for i in 1..3 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+r = Raffle.find(11)
+
+fd = 'moutain_bike'
+fl = 'moutain_bike'
+
+for i in 1..3 do
+  r.images.attach(io: File.open(Rails.root + ('app/assets/seed_images/' + fd + '/' + fl + '_' + i.to_s + '.webp')), filename: fl + '_' + i.to_s + '.webp', content_type: 'image/webp')
+end
+
+
+#
 # Cria tickets para as rifas importadas
 #
 begin
