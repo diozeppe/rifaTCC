@@ -28,6 +28,7 @@ var raffleImages;
 $(document).on('turbolinks:load', function(){
 
   setAlertbehaviour();
+  attachNavbarFixedTopBehaviour();
   attachRaffleFilesBeforeSubmit();
   attachFormValidationReturn();
   doDisableFrom();
@@ -55,6 +56,21 @@ function attachFormValidationReturn(){
     $("form.has-validation-return").bind("ajax:error", function(data){
     var objResponse = data.detail[0];
     doInputErrorMessages(objResponse.model, objResponse.error);
+  });
+}
+
+function attachNavbarFixedTopBehaviour(){
+  window.addEventListener('scroll', function() {
+      if (window.scrollY > 100) {
+        document.getElementById('navbar').classList.add('fixed-top');
+        document.getElementById('navbar').classList.remove('navbar-initial');
+        navbar_height = document.querySelector('.navbar').offsetHeight;
+        document.body.style.paddingTop = navbar_height + 'px';
+      } else {
+        document.getElementById('navbar').classList.remove('fixed-top');
+        document.getElementById('navbar').classList.add('navbar-initial');
+        document.body.style.paddingTop = '0';
+      } 
   });
 }
 

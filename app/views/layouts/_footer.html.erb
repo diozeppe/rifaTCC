@@ -1,7 +1,19 @@
 <div class="row">
+	<div class="col-md-3">
+    	<%= image_tag("logo.png", width: 25, height: 25) %> Rifa Amiga
+    </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+  	<p class="text-end">2021 - 2021 Todos os direitos reservados</p>
+  	</div>
+</div>
+
+<% if Rails.env.development? %>
+<div class="row">
 	<div class="col-md-12">
-			<%= debug(controller_path) if Rails.env.development? %>
-			<%= debug(params) if Rails.env.development? %>
-			<%= debug(pundit_user.class) if Rails.env.development? %>
+			<%= debug(controller_path) %>
+			<%= debug(params) %>
+			<%= debug(pundit_user.class) %>
 	</div>
 </div>
+<% end %>
