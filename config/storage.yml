@@ -5,3 +5,11 @@ local:
 test:
   service: Disk
   root: <%= Rails.root.join("storage") %>
+
+digitalOcean:
+  service: S3
+  access_key_id: <%= ENV["DIGITAL_OCEAN_KEY_ID"] %>
+  secret_access_key: <%= ENV["DIGITAL_OCEAN_KEY"] %>
+  region: nyc3
+  bucket: rifa-amiga-app-storage
+  endpoint: 'https://rifa-amiga-app-storage.nyc3.digitaloceanspaces.com/'

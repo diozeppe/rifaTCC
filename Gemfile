@@ -26,6 +26,9 @@ gem 'pundit'
 # Cron process
 gem 'rufus-scheduler'
 
+# Images storage
+gem "aws-sdk-s3"
+
 # Set timeout to requests
 gem 'rack-timeout'
 
