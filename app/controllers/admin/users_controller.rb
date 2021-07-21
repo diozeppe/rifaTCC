@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   
 	def index
 		authorize User
-		@users = User.paginate(params[:page])
+		@users = User.page(params[:page])
 	end
 
 	def show

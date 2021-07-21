@@ -150,6 +150,14 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "Nenhum(a) %{entry_name} encontrado(a)"
+          one: "Mostrando <b>1</b> %{entry_name}"
+          other: "Mostrando <b>todos %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> no total"
   number:
     currency:
       format:
@@ -220,3 +228,10 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  views:
+    pagination:
+      first: "&laquo; Primeiro"
+      last: "Último &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Próximo &rsaquo;"
+      truncate: "&hellip;"

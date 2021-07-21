@@ -71,7 +71,7 @@ class Admin::InstitutionsController < ApplicationController
 	def institutions_approval
 		authorize Institution
 
-		@institutions = Institution.where(:status => false).paginate(page: params[:page], per_page: 10)
+		@institutions = Institution.where(:status => false).page(params[:page])
 	end	
 
 	def aprove_institution
