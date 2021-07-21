@@ -50,7 +50,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-			<%= link_to 'Voltar', raffles_path, class: "btn btn-submit-adm mb-3" %>
+			<%= link_to 'Voltar', raffles_show_path(@raffle), class: "btn btn-submit-adm mb-3" %>
 			</div>
 			<div class="col-md-6">
 			<%= form_with url: raffles_check_tickets_path(@raffle), html: { method: :post }, class: 'has-error-feedback me-1' do |f| %>
