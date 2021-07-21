@@ -12,4 +12,7 @@ digitalOcean:
   secret_access_key: <%= ENV["DIGITAL_OCEAN_KEY"] %>
   region: nyc3
   bucket: rifa-amiga-app-storage
-  endpoint: 'https://rifa-amiga-app-storage.nyc3.digitaloceanspaces.com/'
+  http_open_timeout: 10
+  http_read_timeout: 10
+  retry_limit: 1
+  endpoint: 'https://nyc3.digitaloceanspaces.com'
