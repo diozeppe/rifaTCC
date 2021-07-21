@@ -20,7 +20,7 @@
                      <div class="col-md-3">
                         <div class="card-image">
                            <% if raffle.images.attached? %>
-                           <img src="url_for(raffle.images.first)", class="img-fluid rounded">
+                           <%= image_tag(raffle.images.first, class: "img-fluid rounded") %>
                            <% else %>
                            <%= image_tag("placeholder-image.jpg", class: "img-fluid rounded") %>
                            <% end %>
@@ -33,7 +33,7 @@
                            <div class="row">
                               <% raffle.tickets.only_owned(@user).each do |ticket| %>
                               <div class="ticket ticket-on-hold">
-                                 <div class="ticket-number text-center"> <%= ticket.number %> </div>
+                                 <div class="ticket-number text-center"><%= ticket.number %></div>
                               </div>
                               <% end %>
                            </div>

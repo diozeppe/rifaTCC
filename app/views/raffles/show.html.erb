@@ -1,5 +1,7 @@
 <div class="row">
-   <div class="col-md-6">
+   <h2 class="text-center sub-group-form"> <%= @raffle.title %> </h2>
+   <div class="col-md-3"></div>
+   <div class="col-md-6 mt-1">
       <% if @raffle.images.attached?  %>
       <div id="raffleCarousel" class="carousel slide" data-bs-ride="carousel">
          <div id="raffleCarouselInner" class="carousel-inner">
@@ -21,7 +23,15 @@
    </div>
          <% end %>
    </div>
+</div>
+
+<div class="row">
    <div class="col-md-6">
+      <h2 class="text-center text-center sub-group-form"> Campanha </h2>
+      <h2><%= @raffle.description %></h2>
+   </div>
+   <div class="col-md-6">
+      <h2 class="text-center sub-group-form"> Situação </h2>
       <div class="d-flex justify-content-center">
          <canvas class="raffleProgessChart" data-tickets-sold = "<%= @raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (@raffle.tickets_number - 0).to_s %>" style="width: 500px;"></canvas>
       </div>
@@ -33,33 +43,27 @@
       </div>
       <div class="row">
          <div class="d-flex justify-content-center my-1">
-            <%= link_to 'Comprar números', raffles_buy_path, :class => 'btn btn-action' %>
+            <% if pundit_user.instance_of? User  %>
+               <%= link_to 'Comprar números', raffles_buy_path, :class => 'btn btn-action' %>
+            <% end %>
          </div>
       </div>
    </div>
 </div>
+
 <div class="row">
-   <div class="col-md-6">
-      <h2 class="text-center text-center sub-group-form"> Campanha </h2>
-      <h2><%= @raffle.title %></h2>
-      <h2><%= @raffle.description %></h2>
-   </div>
    <div class="col-md-6">
       <h2 class="text-center sub-group-form"> Prêmio </h2>
       <h2><%= @raffle.prize %></h2>
       <h2><%= @raffle.prize_description %></h2>
    </div>
-</div>
-<div class="row">
    <div class="col-md-6">
-      <h2 class="text-center sub-group-form"> Condição </h2>
+      <h2 class="text-center sub-group-form"> Condição/Entrega </h2>
       <h2><%= @raffle.condition.name %></h2>
-   </div>
-   <div class="col-md-6">
-      <h2 class="text-center sub-group-form">Entrega </h2>
       <h2><%= @raffle.delivery_type.name %></h2>
    </div>
 </div>
+
 <div class="row">
    <div class="col-md-12">
       <h2 class="sub-group-form">Sobre a instituição </h2>

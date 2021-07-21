@@ -7,7 +7,7 @@
 			<h2 class="text-center">Números disponíveis</h2>
 	<% @tickets.each do |ticket| %>
 		<div class="ticket <%= ticket.get_status_class %>" data-id = "<%= ticket.number %>" data-selected = false>
-			<div class="ticket-number text-center"> <%= ticket.number %> </div>
+			<div class="ticket-number text-center"><%= ticket.number %></div>
 		</div>
 	<% end %>
 	     <div align="align-center">
@@ -17,7 +17,7 @@
 	</div>
 	</div>
 	<div class="col-md-4">
-		<div id="buy_wrap" class="default-border">
+		<div id="buy_wrap" class="default-border mt-1">
 		<div class="ms-1">
 		<div class="row">
 			<h2 class="text-center">Dados da compra</h2>
@@ -50,7 +50,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-			<%= link_to 'Voltar', :back, class: "btn btn-submit-adm mb-3" %>
+			<%= link_to 'Voltar', raffles_path, class: "btn btn-submit-adm mb-3" %>
 			</div>
 			<div class="col-md-6">
 			<%= form_with url: raffles_check_tickets_path(@raffle), html: { method: :post }, class: 'has-error-feedback me-1' do |f| %>
