@@ -3,26 +3,32 @@
 <% if just_show %>
 
 <div class="row">
-	<% if model.images.attached?  %>
-	<div class="col-md-12"><h5 class="sub-group-form">Imagens</h5></div>
-	<div id="raffleCarousel" class="carousel slide" data-bs-ride="carousel">
-		<div id="raffleCarouselInner" class="carousel-inner">
-		<%  model.images.each_with_index do |img, index| %>
+      <% if model.images.attached?  %>
+      <div id="raffleCarousel" class="carousel slide" data-bs-ride="carousel">
+         <div class="carousel-indicators">
+            <%  model.images.each_with_index do |img, index| %>
+               <button type="button" data-bs-target="#raffleCarousel" data-bs-slide-to="<%= index %>" class="<%= index == 0 ? 'active aria-current="true"' : '' %>"></button>
+            <% end %>
+         </div>
+
+         <div id="raffleCarouselInner" class="carousel-inner">
+            <%  model.images.each_with_index do |img, index| %>
             <div class="carousel-item img-fluid <%= index == 0 ? 'active' : '' %>">
               <%= image_tag(img, class: 'd-block w-100') %>
             </div>
-		<% end %>
-         <button class="carousel-control-prev" type="button" data-bs-target="#raffleCarousel" data-bs-slide="prev">
-         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Previous</span>
-         </button>
-         <button class="carousel-control-next" type="button" data-bs-target="#raffleCarousel" data-bs-slide="next">
-         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Next</span>
-         </button>
-         </div>
+      <% end %>
+
+      </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#raffleCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#raffleCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+   </div>
          <% end %>
-	<% end %>
 </div>
 
 <% end %>

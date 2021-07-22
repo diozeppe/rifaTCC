@@ -5,7 +5,6 @@
     <% if institution_signed_in? %>
        <a class="list-group-item list-group-item-action text-center <%= is_active_action('profile')%>" href=<%= profile_institution_path %>>Meu perfil</a>
        <a class="list-group-item list-group-item-action text-center <%= is_active('raffles')%>" href=<%= institution_raffles_path %>>Minhas Rifas</a>
-       <a class="list-group-item list-group-item-action text-center <%= is_active('withdraw')%>" href=""<%=  %>>Solicitar Saque</a>
     <% end %>
 
     <% if user_signed_in? %>

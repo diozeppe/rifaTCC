@@ -36,6 +36,14 @@ class RafflesController < ApplicationController
 		#
 		ticket_list = params[:selected_tickets_hidden].split(';')
 
+		if (ticket_list.length() == 0)
+			respond_to do |format|
+			format.json {render :json => {:error => 'Selecione ao menos um número'}, :status => 422}
+			format.html {render 'buy'}
+			end
+			return
+		end
+
 		#
 		# Lista de numeros que ja foram pegos
 		#

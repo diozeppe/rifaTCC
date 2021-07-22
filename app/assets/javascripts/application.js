@@ -19,7 +19,7 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require cable
 
 $.jMaskGlobals.watchDataMask = true;
 
@@ -137,26 +137,6 @@ function doDropZoneInitialization() {
 }
 }
 
-function doChartInitialization(){
-  $('.raffleProgessChart').each(function(e){
-    var ctxP = this;
-    var myPieChart = new Chart(ctxP, {
-      type: 'doughnut',
-      data: {
-        labels: ["Vendidos", "Em Aberto"],
-        datasets: [{
-          data: [this.getAttribute('data-tickets-sold'), this.getAttribute('data-tickets-open')],
-          backgroundColor: ["#fed18c", "#fe664f"],
-          hoverBackgroundColor: ["#ffa926", "#ff3112"]
-        }]
-      },
-      options: {
-        responsive: true
-      }
-    });  
-  });
-}
-
 function addTicketOnHold(id){
   e = document.querySelectorAll('[data-id="' + id + '"]')[0];
   e.classList.remove ('ticket-open');
@@ -235,12 +215,17 @@ function doTicketInitialization(){
   $("form.has-error-feedback").bind("ajax:error", function(data){
     var objResponse = data.detail[0];
 
-    $('#selected_tickets_hidden').val(objResponse.newTicketList);
-    setSelectedArray(objResponse.newTicketList);
-    showSelectedTickets();
-    calculateFinalPrice();
+    if (objResponse.newTicketList) {
+      $('#selected_tickets_hidden').val(objResponse.newTicketList);
+      setSelectedArray(objResponse.newTicketList);
+      showSelectedTickets();
+      calculateFinalPrice();
+      $('#error_message').html('Os números: ' + objResponse.alreadyTaken + ' já foram reservados ou comprados e foram removidos da lista');
+    }
 
-    $('#error_message').html('Os números: ' + objResponse.alreadyTaken + ' já foram reservados ou comprados e foram removidos da lista');
+    if (objResponse.error) {
+     $('#error_message').html(objResponse.error); 
+    }
   });
 
 
@@ -290,4 +275,101 @@ function doInputErrorMessages(model, errors_json) {
     }
     $('#' + key + '_feedback').html(errors_json[key].join(','));
   })
+}
+
+
+//
+// Chart JS Helpers
+//
+function doChartInitialization(){
+  $('.raffleProgessChart').each(function(e){
+    var ctxP = this;
+    var myPieChart = new Chart(ctxP, {
+      type: 'doughnut',
+      data: {
+        labels: ["Vendidos", "Em Aberto"],
+        datasets: [{
+          data: [this.getAttribute('data-tickets-sold'), this.getAttribute('data-tickets-open')],
+          backgroundColor: ["#fed18c", "#fe664f"],
+          hoverBackgroundColor: ["#ffa926", "#ff3112"]
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });  
+  });
+
+  $('#soldChart').each(function(e){
+    var ctxP = this;
+    var chart = new Chart(ctxP, {
+      type: 'line',
+      data: {
+        labels: ["Maio", "Junho", "Agosto", "Setembro", "Outubro"],
+        datasets: [{
+          label: 'Vendas de números (Últimos 7 dias)',
+          data: [10,20,30,40,50],
+          borderColor: '#fed18c'
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });  
+  });
+
+  $('#registrationChart').each(function(e){
+    var ctxP = this;
+    var chart = new Chart(ctxP, {
+      type: 'line',
+      data: {
+        labels: ["Maio", "Junho", "Agosto", "Setembro", "Outubro"],
+        datasets: [{
+          label: 'Cadastros (Últimos 7 dias)',
+          data: [10,20,30,40,50],
+          borderColor: '#fed18c'
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });  
+  });
+
+  $('#newRafflesChart').each(function(e){
+    var ctxP = this;
+    var chart = new Chart(ctxP, {
+      type: 'line',
+      data: {
+        labels: ["Maio", "Junho", "Agosto", "Setembro", "Outubro"],
+        datasets: [{
+          label: 'Novas rifas (Últimos 7 dias)',
+          data: [10,20,30,40,50],
+          borderColor: '#fed18c'
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });  
+  });
+
+  $('#revenueChart').each(function(e){
+    var ctxP = this;
+    var chart = new Chart(ctxP, {
+      type: 'line',
+      data: {
+        labels: ["Maio", "Junho", "Agosto", "Setembro", "Outubro"],
+        datasets: [{
+          label: 'Rendimentos (Últimos 7 dias)',
+          data: [10,20,30,40,50],
+          borderColor: '#fed18c'
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });  
+  });
+  
 }

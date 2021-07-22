@@ -4,7 +4,6 @@
     <li class="nav-item pe-3"><a class="nav-link <%= is_active('raffles')%>" href=<%= admin_raffles_path %>>Campanhas</a></li>
     <li class="nav-item pe-3"><a class="nav-link <%= is_active('financial')%>" href=<%= admin_financial_path %>>Financeiro</a></li>
     <li class="nav-item pe-3"><a class="nav-link <%= is_active('institutions_approval')%>" href=<%= admin_institutions_approval_path %>>Cadastros Pendentes (<%= Institution.not_approved_count %>)</a></li>
-    <li class="nav-item pe-3"><a class="nav-link <%= is_active('withdraws')%>" href=<%= admin_withdraws_path %>>Saques Pendentes</a></li>
     <li class="nav-item pe-3"><a class="nav-link <%= is_active('reports')%>" href=<%= admin_reports_path %>>Relatorios</a></li>
   </ul>
   <% if admin_signed_in? %>
