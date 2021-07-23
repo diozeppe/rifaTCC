@@ -1,6 +1,5 @@
 class Admin::InstitutionsController < ApplicationController
 	before_action :set_institution, only: [:edit, :update, :show, :destroy]
-	before_action :clean_params, only: [:create, :update]
 
 	def index
 		authorize Institution
@@ -22,7 +21,7 @@ class Admin::InstitutionsController < ApplicationController
 		@institution = Institution.new(institution_params)
 
 		if @institution.save
-			flash[:sucess] = "Instituição criado com sucesso"
+			redirect_to :admin_institutions, :notice => "Instituição criado com sucesso"
 		else
 			respond_to do |format|
 			format.json {render :json => {:model => @institution.class.name.downcase, :error => @institution.errors.as_json}, :status => 422}
@@ -48,7 +47,7 @@ class Admin::InstitutionsController < ApplicationController
 		end
 
 		if @institution.update(end_params)
-			redirect_to :admin_institutions, :notice => "Instituição Atualizado/Criado com sucesso"
+			redirect_to :admin_institutions, :notice => "Instituição atualizado com sucesso"
 		else
 			respond_to do |format|
 			format.json {render :json => {:model => @institution.class.name.downcase, :error => @institution.errors.as_json}, :status => 422}
@@ -92,12 +91,6 @@ class Admin::InstitutionsController < ApplicationController
 
 	def set_institution
 		@institution = Institution.find(params[:id])
-	end
-
-	def clean_params
-		params[:institution][:zipCode] = params[:institution][:zipCode].tr('^0-9', '')
-		params[:institution][:phone_number] = params[:institution][:phone_number].tr('^0-9', '')
-		params[:institution][:phone_number2] = params[:institution][:phone_number2].tr('^0-9', '')
 	end
 
 	def institution_params

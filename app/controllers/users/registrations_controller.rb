@@ -11,9 +11,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      sign_in(resource)
+      redirect_to profile_user_path(resource)
+    else
+      respond_to do |format|
+      format.json {render :json => {:model => @user.class.name.downcase, :error => @user.errors.as_json}, :status => 422}
+      format.html {render 'sign_up'}
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -37,14 +47,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # removing all OAuth session data.
   # def cancel
   #   super
-  # end
+  # end 
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -52,12 +62,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    sign_in_path(@user)
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:cpf,
+      :name,
+      :email,
+      :password,
+      :password_confirmation,
+      :address,
+      :number,
+      :complement,
+      :neighborhood,
+      :zipCode,
+      :phone_number,
+      :cellphone_number)
+  end
+
 end

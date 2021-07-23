@@ -55,7 +55,7 @@
   </div>
 
   <div class="col-md-3 rounded-end square" id="InstituicaoLogin">
-    <%= form_with(url: sign_in_institution_path, html: { class: "form-horizontal" }, method: "post") do |f| %>
+    <%= form_with(url: sign_in_institution_path, html: { class: "form-horizontal has-validation-return" }, method: "post") do |f| %>
     <div class="form-group">
       <div class="text-center"><h2>Instituição</h2></div>
     </div>

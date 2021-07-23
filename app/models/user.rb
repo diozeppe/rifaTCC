@@ -12,8 +12,16 @@ class User < ApplicationRecord
          :trackable,
          :validatable
 
+  before_validation {
+    self.cpf = self.cpf.tr('^0-9', '')
+    self.zipCode = self.zipCode.tr('^0-9', '')
+    self.phone_number = self.phone_number.tr('^0-9', '')
+    self.cellphone_number = self.cellphone_number.tr('^0-9', '')
+  }
+
   before_save { 
     self.email = email.downcase
+
    }
 
   validates :cpf, presence: true, 

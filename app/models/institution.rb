@@ -3,6 +3,15 @@ class Institution < ApplicationRecord
   
   has_many :raffles
 
+  before_validation {
+    self.cnpj = self.cnpj.tr('^0-9', '')
+    self.zipCode = self.zipCode.tr('^0-9', '')
+    self.phone_number = self.phone_number.tr('^0-9', '')
+    self.phone_number2 = self.phone_number2.tr('^0-9', '')
+    self.agency_number = self.agency_number.tr('^0-9', '')
+    self.account_number = self.account_number.tr('^0-9', '')
+  }
+
   before_save { self.email = email.downcase }
 
   devise :database_authenticatable,

@@ -1,6 +1,5 @@
 class Admin::UsersController < ApplicationController
 	before_action :set_user, only: [:edit, :update, :show, :destroy, :profile]
-	before_action :clean_params, only: [:create, :update]
   
 	def index
 		authorize User
@@ -22,9 +21,12 @@ class Admin::UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			flash[:sucess] = "Usuário criado com sucesso"
+			redirect_to :admin_root, :notice => "Usuário criado com sucesso"
 		else
-			render 'new'
+			respond_to do |format|
+			format.json {render :json => {:model => @user.class.name.downcase, :error => @user.errors.as_json}, :status => 422}
+			format.html {render 'new'}
+			end
 		end
 	end
 
@@ -70,12 +72,6 @@ class Admin::UsersController < ApplicationController
 
 	def set_user
 		@user = User.find(params[:id])
-	end
-
-	def clean_params
-		params[:user][:zipCode] = params[:user][:zipCode].tr('^0-9', '')
-		params[:user][:phone_number] = params[:user][:phone_number].tr('^0-9', '')
-		params[:user][:cellphone_number] = params[:user][:cellphone_number].tr('^0-9', '')
 	end
 
 	def user_params

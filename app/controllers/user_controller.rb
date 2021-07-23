@@ -1,6 +1,5 @@
 class UserController < ApplicationController
 	before_action :set_user
-	before_action :clean_params, only: [:create, :update]
 
 	#
 	# Shared Actions
@@ -63,12 +62,6 @@ class UserController < ApplicationController
 
 	def set_user
 		@user = pundit_user
-	end
-
-	def clean_params
-		params[:user][:zipCode] = params[:user][:zipCode].tr('^0-9', '')
-		params[:user][:phone_number] = params[:user][:phone_number].tr('^0-9', '')
-		params[:user][:cellphone_number] = params[:user][:cellphone_number].tr('^0-9', '')
 	end
 
 	def user_params

@@ -1,6 +1,5 @@
 class InstitutionController < ApplicationController
 	before_action :set_institution
-	before_action :clean_params, only: [:create, :update]
 
 	def profile
 		authorize @institution, policy_class: InstitutionPolicy
@@ -44,14 +43,6 @@ class InstitutionController < ApplicationController
 
 	def set_institution
 		@institution = pundit_user
-	end
-
-	def clean_params
-		params[:institution][:zipCode] = params[:institution][:zipCode].tr('^0-9', '')
-		params[:institution][:phone_number] = params[:institution][:phone_number].tr('^0-9', '')
-		params[:institution][:phone_number2] = params[:institution][:phone_number2].tr('^0-9', '')
-		params[:institution][:agency_number] = params[:institution][:agency_number].tr('^0-9', '')
-		params[:institution][:account_number] = params[:institution][:account_number].tr('^0-9', '')
 	end
 
 	def institution_params

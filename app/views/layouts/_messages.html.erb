@@ -1,9 +1,11 @@
 <div class="position-relative mt-2">
 	<div class="position-absolute top-0 start-50 translate-middle">
 		<% flash.each do |type, msg| %>
-		<div class="alert alert-primary" role="alert">
-			<%= msg %>
-		</div>
+			<% if (type == 'danger') %>
+				<div class="alert alert-danger" role="alert"><%= msg %></div>
+			<% elsif (type == 'success') %>
+				<div class="alert alert-primary" role="alert"><%= msg %></div>
+			<% end %>
 		<% end %>
 	</div>
 </div>

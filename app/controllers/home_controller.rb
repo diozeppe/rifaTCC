@@ -21,6 +21,9 @@ class HomeController < ApplicationController
 				if @user.valid_password?(login_params[:password])
 					sign_in :user, @user
 					redirect_to root_path
+				else
+					flash[:danger] = "CPF não cadastrado ou senha inválida"
+					redirect_back(fallback_location: sign_in_path)
 				end
 			else
 				flash[:danger] = "CPF não cadastrado ou senha inválida"
