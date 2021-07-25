@@ -146,6 +146,11 @@ class RafflesController < ApplicationController
 		@raffle.tickets_sold += @tickets.length
 		@raffle.save()
 
+		#
+		# Enviamos um email ao usuario
+		#
+		UsersMailer.with(user: @user, raffle: @raffle).raffle_bought.deliver_later
+
 		redirect_to tickets_user_path
 	end
 

@@ -52,8 +52,16 @@ class UserController < ApplicationController
 
 		authorize @raffle, policy_class: RafflePolicy
 
-		@raffle.raffle_status_id = 4 # Define como aguardando saque
+		#
+		# Define como aguardando saque
+		#
+		@raffle.raffle_status_id = 4
 		@raffle.save()
+
+		#
+		# Envia email 
+		#
+		InstitutionMailer.with(raffle: @raffle, institution: @institution).user_confirmed_delivery.deliver_later
 
 		redirect_to tickets_user_path
 	end

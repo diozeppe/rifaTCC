@@ -20,15 +20,15 @@ scheduler.every '1m' do
 
   puts 'Buscando rifas para sortear'
 
-  raffles_to_set_result.each do |r|
+  raffles_to_set_result.each do |raffle|
     while true do 
-      ticketsToDraw = r.tickets.where('user_id <> 0')
+      ticketsToDraw = raffle.tickets.where('user_id <> 0')
       #
       # Caso ninguem tenha comprado, cancela a rifa
       #
       if (ticketsToDraw.empty?)
-        r.raffle_status_id = 5
-        r.save
+        raffle.raffle_status_id = 5
+        raffle.save
         break
       end
 
@@ -36,17 +36,38 @@ scheduler.every '1m' do
 
       puts 'Buscando numero'
 
-      t = ticketsToDraw[result]
+      winner_ticket = ticketsToDraw[result]
 
-      if (!t.nil?)
+      if (!winner_ticket.nil?)
         puts 'Atualizou'
 
-        r.winner_ticket_id = t.id
-        r.raffle_status_id = 2
+        raffle.winner_ticket_id = winner_ticket.id
+        raffle.raffle_status_id = 2
 
         # TODO
         # Faz envio de email
         #
+
+        #
+        # Email para a instituição
+        #
+        InstitutionMailer.with(institution: raffle.institution, raffle: raffle).raffle_drew.deliver_later
+
+        #
+        # Email do ganhador
+        #
+        winner_user = User.find(winner_ticket.user_id);
+
+        UsersMailer.with(user: winner_ticket.user, raffle: raffle).raffle_result_winner.deliver_later
+
+        #
+        # Email dos outros usuarios
+        #
+        other_users = User.get_except_winner(raffle, winner_ticket.user)
+
+        other_users.each do |user|
+          UsersMailer.with(user: user, raffle: raffle).raffle_result_loss.deliver_later
+        end
 
         r.save()
         break

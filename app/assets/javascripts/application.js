@@ -29,6 +29,7 @@ $(document).on('turbolinks:load', function(){
 
   setAlertbehaviour();
   attachNavbarFixedTopBehaviour();
+  attachFooterFixedBottomBehaviour();
   attachRaffleFilesBeforeSubmit();
   attachFormValidationReturn();
   doDisableFrom();
@@ -61,7 +62,7 @@ function attachFormValidationReturn(){
 
 function attachNavbarFixedTopBehaviour(){
   window.addEventListener('scroll', function() {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 120) {
         document.getElementById('navbar').classList.add('fixed-top');
         document.getElementById('navbar').classList.remove('navbar-initial');
         navbar_height = document.querySelector('.navbar').offsetHeight;
@@ -72,6 +73,14 @@ function attachNavbarFixedTopBehaviour(){
         document.body.style.paddingTop = '0';
       } 
   });
+}
+
+function attachFooterFixedBottomBehaviour(){
+  var hasVScroll = document.body.scrollHeight > document.body.clientHeight;
+
+  if (!hasVScroll) {
+    $('#footer').addClass('fixed-bottom');
+  }
 }
 
 function attachRaffleFilesBeforeSubmit(){

@@ -1,0 +1,17 @@
+<div class="container-fluid">
+	<div class="row">
+		<%= image_tag("data:image/jpeg;base64,logo.png", width: 70, height: 70) %>
+	</div>
+	<div class="row">
+		<h1 class="text-center">Confirmação de compra</h1>
+		<p>Recebemos sua compra</p>
+		<p>Campanha: <%= @raffle.title %></p>
+		<p>Números adquiridos: </p>
+		<% @raffle.tickets.only_owned(@user).each do |ticket| %>
+			<div class="ticket ticket-on-hold">
+				<div class="ticket-number text-center"> <%= @raffle.tickets.only_owned(@user) %> </div>
+			</div>
+		<% end %>
+		<p>Agora é só aguardar o resultado no dia: <%= raffle.draw_date %></p>
+	</div>
+</div>

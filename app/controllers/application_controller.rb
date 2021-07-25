@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 		if resource.instance_of? Admin
 			admin_root_path
 		elsif resource.instance_of? Institution
-			institutions_dashboard_root_path
+			profile_institution_path
 		elsif resource.instance_of? User
-			users_dashboard_root_path
+			profile_user_path
 		end
 	end
 

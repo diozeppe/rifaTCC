@@ -8,7 +8,8 @@
 	</div>
 	<div class="row">
 		<h5>Infelizmento não foi dessa vez...</h5>
-		<h5>O número sorteado foi: @raffle.winner_ticket.number</h5>
+		<h5>O número sorteado foi: <%= @raffle.winner_ticket.number %></h5>
 		<h5>Você pode ver mais detalhes acessando o nosso site</h5>
+		<%= link_to 'Acesso', Rails.configuration.action_mailer.default_url_options[:host] %>
 	</div>
 </div>

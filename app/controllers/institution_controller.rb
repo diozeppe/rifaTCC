@@ -30,11 +30,16 @@ class InstitutionController < ApplicationController
 
 		authorize @raffle, policy_class: RafflePolicy
 
-
-		@raffle.raffle_status_id = 3 # Define como aguardando recebimento
+		#
+		# Define como aguardando recebimento
+		#
+		@raffle.raffle_status_id = 3
 		@raffle.save()
 
-		puts @raffle.errors.full_messages
+		#
+		# Envia email 
+		#
+		UsersMailer.with(user: @raffle.winner_ticket.user, raffle: @raffle, institution: @institution).institution_sent_prize.deliver_later
 
 		redirect_to institution_raffles_path
 	end

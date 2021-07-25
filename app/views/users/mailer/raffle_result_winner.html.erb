@@ -10,5 +10,6 @@
 		<h5>Você foi o ganhador da rifa: <%= @raffle.title %> </h5>
 		<h5>O número sorteado foi: <%= @raffle.winner_ticket.number %></h5>
 		<h5>Você pode ver mais detalhes acessando o nosso site</h5>
+		<%= link_to 'Acesso', Rails.configuration.action_mailer.default_url_options[:host] %>
 	</div>
 </div>

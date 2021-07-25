@@ -58,7 +58,7 @@
       </div>
          <div class="d-flex align-items-stretch flex-column bd-highlight mb-3">
             <div class="p-2 bd-highlight">
-            <% if pundit_user.instance_of? User  %>
+            <% if (pundit_user.instance_of? User) && (@raffle.tickets_number >= @raffle.tickets_sold) %>
                <%= link_to 'Comprar números', raffles_buy_path, :class => 'btn btn-submit-adm' %>
             <% end %>
          </div>

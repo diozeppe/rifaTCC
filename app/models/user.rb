@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   paginates_per 10
+
+  scope :get_except_winner, -> (raffle_id, winner_id) {joins(:tickets).where(tickets: {raffle_id: raffle_id, ticket_status_id: 3}).where.not(tickets: {'user_id': winner_id}).distinct}
   
   has_one :wallet
   has_many :tickets
