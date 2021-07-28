@@ -5,13 +5,14 @@ class Raffle < ApplicationRecord
   scope :has_ticket_owned_by_user, -> (user_id) {joins(:tickets).where(tickets: {user: user_id, ticket_status_id:  3}).distinct}
 
   belongs_to :institution
-  has_many :tickets
-  belongs_to :winner_ticket, :class_name => 'Ticket', optional: true
-  has_many_attached :images
   belongs_to :category
   belongs_to :condition
   belongs_to :delivery_type
   belongs_to :raffle_status
+  belongs_to :winner_ticket, :class_name => 'Ticket', optional: true
+
+  has_many :tickets
+  has_many_attached :images
 
   validates :title, presence: true,
                     length: {

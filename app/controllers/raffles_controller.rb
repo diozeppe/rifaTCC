@@ -136,6 +136,7 @@ class RafflesController < ApplicationController
 		@tickets = @raffle.tickets.only_owned_on_hold(@user)
 
 		@tickets.each do |t|
+			t.purchase_date = DateTime.now
 			t.ticket_status_id = 3
 			t.save()
 		end
