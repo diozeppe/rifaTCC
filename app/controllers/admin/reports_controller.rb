@@ -164,7 +164,53 @@ class Admin::ReportsController < ApplicationController
         # complementa o dataset
         #
 		dataset = {
-				   :label => 'Instituições', 
+				     :label => 'Instituições', 
+				     :backgroundColor => '#fed18c',
+			       :borderColor => '#AA8774',
+			       :data => dset
+			      }
+
+		datasets.push(dataset)
+
+		chart = {:type    => 'bar',
+			     :options => {:responsive => true},
+			     :data => {:labels => labels, :datasets => datasets}
+			 	}
+
+		puts chart
+
+		render json: chart.to_json
+	end
+
+	def get_revenue
+		get_filters
+
+		result = Raffle.only_finished.where('created_at >= ? ', DateTime.now - 15.days).group("TRIM(TO_CHAR(created_at, 'Month')) || ', ' || extract(day from created_at)").sum('((tickets_sold * unit_value)/10) * 100')
+
+        #
+        # Define labels base do chart
+        #
+        labels = []
+        result.each do |k, v|
+          labels.push(k)
+        end
+
+        #
+        # Preenche os datas sets
+        #
+        datasets = []
+
+		dset = []
+
+		labels.each do |v|
+			dset.push(result[v])
+		end
+
+		#
+        # complementa o dataset
+        #
+		dataset = {
+				   :label => 'Rendimento', 
 				   :backgroundColor => '#fed18c',
 			       :borderColor => '#AA8774',
 			       :data => dset
@@ -181,6 +227,53 @@ class Admin::ReportsController < ApplicationController
 
 		render json: chart.to_json
 	end
+
+	def get_new_raffles
+		get_filters
+
+		result = Raffle.where('created_at >= ? ', DateTime.now - 15.days).group("TRIM(TO_CHAR(created_at, 'Month')) || ', ' || extract(day from created_at)").count
+
+    #
+    # Define labels base do chart
+    #
+    labels = []
+    result.each do |k, v|
+      labels.push(k)
+    end
+
+    #
+    # Preenche os datas sets
+    #
+    datasets = []
+
+		dset = []
+
+		labels.each do |v|
+			dset.push(result[v])
+		end
+
+		#
+        # complementa o dataset
+        #
+		dataset = {
+				   	 :label => 'Novas campanhas', 
+				   	 :backgroundColor => '#fed18c',
+			       :borderColor => '#AA8774',
+			       :data => dset
+			      }
+
+		datasets.push(dataset)
+
+		chart = {:type    => 'bar',
+			     :options => {:responsive => true},
+			     :data => {:labels => labels, :datasets => datasets}
+			 	}
+
+		puts chart
+
+		render json: chart.to_json
+	end
+
 
 	private
 

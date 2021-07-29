@@ -16,6 +16,7 @@ class CreateRaffle < ActiveRecord::Migration[5.1]
         t.integer    :tickets_number, default: 0
         t.integer    :tickets_sold, default: 0
     	  t.datetime   :draw_date
+        t.datetime   :finish_date
         t.timestamps
     end
   end

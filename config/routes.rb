@@ -80,13 +80,15 @@ Rails.application.routes.draw do
     get 'financial', action: :index,     controller: 'financial'
     get 'withdraws', action: :index,     controller: 'withdraws'
     get 'reports',   action: :general,   controller: 'reports'
-    get 'get_sales', action: :get_sales, controller: 'reports'
 
     #
     # Reports JSON
     #
+    get 'get_sales',                     action: :get_sales,                     controller: 'reports'
     get 'get_user_registrations',        action: :get_user_registrations,        controller: 'reports'
     get 'get_institution_registrations', action: :get_institution_registrations, controller: 'reports'
+    get 'get_revenue',                   action: :get_revenue,                   controller: 'reports'
+    get 'get_new_raffles',               action: :get_new_raffles,               controller: 'reports'
   end
 
   #

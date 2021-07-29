@@ -2,6 +2,7 @@ class Raffle < ApplicationRecord
   paginates_per 10
 
   scope :only_active, -> { where('raffle_status_id = ?', 1)}
+  scope :only_finished, -> { where('raffle_status_id = ?', 4)}
   scope :has_ticket_owned_by_user, -> (user_id) {joins(:tickets).where(tickets: {user: user_id, ticket_status_id:  3}).distinct}
 
   belongs_to :institution

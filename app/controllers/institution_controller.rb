@@ -62,13 +62,17 @@ class InstitutionController < ApplicationController
 			:number,
 			:complement,
 			:neighborhood,
+      		:city,
+      		:state,
 			:zipCode,
 			:phone_number,
 			:phone_number2,
 			:bank_number,
 			:agency_number,
 			:account_number,
-			:qualification
+			:qualification,
+      		:about,
+      		:site
 			)
 	end
 
@@ -83,12 +87,16 @@ class InstitutionController < ApplicationController
 			:complement,
 			:neighborhood,
 			:zipCode,
+			:city,
+			:state,
 			:phone_number,
 			:phone_number2,
 			:bank_number,
 			:agency_number,
 			:account_number,
-			:qualification
+			:qualification,
+      		:about,
+      		:site
 			)
 	end
 end

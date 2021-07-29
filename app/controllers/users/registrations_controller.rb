@@ -83,6 +83,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :number,
       :complement,
       :neighborhood,
+      :city,
+      :state,
       :zipCode,
       :phone_number,
       :cellphone_number)

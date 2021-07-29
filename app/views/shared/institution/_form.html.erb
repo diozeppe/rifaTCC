@@ -101,6 +101,22 @@
 	</div>
 
 	<div class="col-md-6">
+		<%= f.label :city, "Cidade", class: "form-label mt-1 rmb-1" %>
+		<div class="input-group has-validation">
+			<%= f.text_field :city, :class => 'form-control rounded-3' %>
+			<div id="city_feedback" class="invalid-feedback"></div>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<%= f.label :state, "Estado", class: "form-label mt-1 rmb-1" %>
+		<div class="input-group has-validation">
+			<%= f.text_field :state, :class => 'form-control rounded-3', maxlength: 2 %>
+			<div id="state_feedback" class="invalid-feedback"></div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
 		<%= f.label :zipCode, "CEP", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
 			<%= f.text_field :zipCode, :class => 'form-control rounded-3', "data-mask": "00000-000", "placeholder": "000000-000" %>
@@ -161,6 +177,14 @@
 <div class="col-md-12"><h5 class="sub-group-form">Sobre</h5></div>
 <div class="row">
 	<div class="col-md-12">
+		<%= f.label :site, "Site", class: "form-label mt-1 rmb-1" %>
+		<div class="input-group has-validation">
+			<%= f.text_field :site, :class => 'form-control rounded-3', maxlength: 100 %>
+			<div id="site_feedback" class="invalid-feedback"></div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<%= f.label :about, "Sobre a instituição", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
 			<%= f.text_area :about, :class => 'form-control rounded-3', rows: 10, maxlength: 500 %>
 			<div id="about_feedback" class="invalid-feedback"></div>

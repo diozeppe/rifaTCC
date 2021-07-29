@@ -105,13 +105,17 @@ class Admin::InstitutionsController < ApplicationController
 			:number,
 			:complement,
 			:neighborhood,
+			:city,
+			:state,
 			:zipCode,
 			:phone_number,
 			:phone_number2,
 			:bank_number,
 			:agency_number,
 			:account_number,
-			:qualification
+			:qualification,
+			:about,
+      		:site
 			)
 	end
 
@@ -125,13 +129,17 @@ class Admin::InstitutionsController < ApplicationController
 			:number,
 			:complement,
 			:neighborhood,
+			:city,
+			:state,
 			:zipCode,
 			:phone_number,
 			:phone_number2,
 			:bank_number,
 			:agency_number,
 			:account_number,
-			:qualification
+			:qualification,
+      		:about,
+      		:site
 			)
 	end
 

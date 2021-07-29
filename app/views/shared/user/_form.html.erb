@@ -65,6 +65,14 @@
 	</div>
 
 	<div class="col-md-6">
+		<%= f.label :neighborhood, "Bairro", class: "form-label mt-1 rmb-1" %>
+		<div class="input-group has-validation">
+			<%= f.text_field :neighborhood, :class => 'form-control rounded-3' %>
+			<div id="neighborhood_feedback" class="invalid-feedback"></div>
+		</div>
+	</div>
+
+	<div class="col-md-6">
 		<%= f.label :complement, "Complemento", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
 			<%= f.text_field :complement, :class => 'form-control rounded-3' %>
@@ -73,10 +81,18 @@
 	</div>
 
 	<div class="col-md-6">
-		<%= f.label :neighborhood, "Bairro", class: "form-label mt-1 rmb-1" %>
+		<%= f.label :city, "Cidade", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
-			<%= f.text_field :neighborhood, :class => 'form-control rounded-3' %>
-			<div id="neighborhood_feedback" class="invalid-feedback"></div>
+			<%= f.text_field :city, :class => 'form-control rounded-3' %>
+			<div id="city_feedback" class="invalid-feedback"></div>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<%= f.label :state, "Estado", class: "form-label mt-1 rmb-1" %>
+		<div class="input-group has-validation">
+			<%= f.text_field :state, :class => 'form-control rounded-3', maxlength: 2 %>
+			<div id="state_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>
 

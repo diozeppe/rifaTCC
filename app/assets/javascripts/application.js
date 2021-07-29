@@ -328,39 +328,15 @@ function doChartInitialization(){
   });
 
   $('#newRafflesChart').each(function(e){
-    var ctxP = this;
-    var chart = new Chart(ctxP, {
-      type: 'line',
-      data: {
-        labels: ["Maio", "Junho", "Agosto", "Setembro", "Outubro"],
-        datasets: [{
-          label: 'Novas rifas (Últimos 7 dias)',
-          data: [10,20,30,40,50],
-          borderColor: '#fed18c'
-        }]
-      },
-      options: {
-        responsive: true
-      }
-    });  
+    $.get('get_new_raffles', function(data){
+      var chart = new Chart($('#newRafflesChart'), data);
+    });
   });
 
   $('#revenueChart').each(function(e){
-    var ctxP = this;
-    var chart = new Chart(ctxP, {
-      type: 'line',
-      data: {
-        labels: ["Maio", "Junho", "Agosto", "Setembro", "Outubro"],
-        datasets: [{
-          label: 'Rendimentos (Últimos 7 dias)',
-          data: [10,20,30,40,50],
-          borderColor: '#fed18c'
-        }]
-      },
-      options: {
-        responsive: true
-      }
-    });  
+    $.get('get_revenue', function(data){
+      var chart = new Chart($('#revenueChart'), data);
+    });
   });
   
 }

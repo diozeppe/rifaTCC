@@ -84,6 +84,8 @@ class Admin::UsersController < ApplicationController
 			:number,
 			:complement,
 			:neighborhood,
+			:city,
+			:state,
 			:zipCode,
 			:phone_number,
 			:cellphone_number)
@@ -97,6 +99,8 @@ class Admin::UsersController < ApplicationController
 			:number,
 			:complement,
 			:neighborhood,
+			:city,
+			:state,
 			:zipCode,
 			:phone_number,
 			:cellphone_number)
