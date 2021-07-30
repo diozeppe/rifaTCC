@@ -5,6 +5,10 @@ class HomeController < ApplicationController
 		
 	end
 
+	def terms_of_service
+		
+	end
+
 	def log_in
 		if pundit_user.nil?
 			render "sign_in"

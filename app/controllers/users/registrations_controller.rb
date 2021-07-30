@@ -14,6 +14,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
 
+    if (params[:tos] == false || !params[:tos].present?)
+      respond_to do |format|
+      format.json {render :json => {:model => "", :error => {:tos => ["Você precisa aceitar os termos de uso"]}}, :status => 422}
+      format.html {render 'sign_up'}
+      end
+      return
+    end
+
     if @user.save
       sign_in(resource)
       redirect_to profile_user_path(resource)

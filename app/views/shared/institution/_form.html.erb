@@ -192,6 +192,12 @@
 	</div>
 </div>
 
+<% if !form_is_edit %>
+	<div class="col-md-12"><h5 class="sub-group-form">Termos de Uso</h5></div>
+	<%= check_box_tag 'tos', 'true', false, class: 'form-check-input' %>
+	<label class="form-check-label" for="tos">Li e aceito os <%= link_to 'Termos de uso', terms_of_service_path, target: :_blank, class: "" %></label>
+	<div id="tos_feedback" class="invalid-feedback"></div>
+<% end %>
 
 <div class="row">
 	<div class="col-md-6">

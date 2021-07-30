@@ -8,21 +8,25 @@ Rails.application.routes.draw do
   #
   # Open routes to the app
   #
-  get  'sign_in', to: 'home#log_in'
-  post 'sign_in_user', to: 'home#access_user'
+  get  'sign_in',             to: 'home#log_in'
+  get  'terms_of_service',    to: 'home#terms_of_service'
+  post 'sign_in_user',        to: 'home#access_user'
   post 'sign_in_institution', to: 'home#access_institution'
 
-  get 'raffles', to: 'raffles#index'
-  get 'raffles/:id', to: 'raffles#show', as: :raffles_show
-  get 'raffles/:id/buy', to: 'raffles#buy', as: :raffles_buy
-  get 'raffles/:id/cancel', to: 'raffles#cancel', as: :raffles_cancel
-  get 'raffles/:id/checkout', to: 'raffles#checkout', as: :raffles_checkout
-  get 'raffles/:id/finish', to: 'raffles#finish', as: :raffles_finish
+  #
+  # Processo principal de compra e acesso a campanhas
+  #
+  get  'raffles',                   to: 'raffles#index'
+  get  'raffles/:id',               to: 'raffles#show',          as: :raffles_show
+  get  'raffles/:id/buy',           to: 'raffles#buy',           as: :raffles_buy
+  get  'raffles/:id/cancel',        to: 'raffles#cancel',        as: :raffles_cancel
+  get  'raffles/:id/checkout',      to: 'raffles#checkout',      as: :raffles_checkout
+  get  'raffles/:id/finish',        to: 'raffles#finish',        as: :raffles_finish
   post 'raffles/:id/check_tickets', to: 'raffles#check_tickets', as: :raffles_check_tickets
 
   #match "raffles/:id/checkout" => "raffles#checkout", as: :raffles_checkout, via: [:get, :post]
 
-  match "user/sign_in" => "home#log_in", via: [:get, :post]
+  match "user/sign_in"        => "home#log_in", via: [:get, :post]
   match "institution/sign_in" => "home#log_in", via: [:get, :post]
 
   #
@@ -36,7 +40,6 @@ Rails.application.routes.draw do
     get ':id/confirm_received', to: 'user#confirm_received', as: 'confirm_received'
   end
 
-
   #
   # Intitutions acess routes
   #
@@ -49,7 +52,6 @@ Rails.application.routes.draw do
 
   namespace :institution do
     resources :raffles do
-
     end
   end
 
@@ -76,10 +78,10 @@ Rails.application.routes.draw do
     #
     # Navbar routes
     #
-    get 'raffles',   action: :index,     controller: 'raffles'
-    get 'financial', action: :index,     controller: 'financial'
-    get 'withdraws', action: :index,     controller: 'withdraws'
-    get 'reports',   action: :general,   controller: 'reports'
+    get 'raffles',   action: :index,   controller: 'raffles'
+    get 'financial', action: :index,   controller: 'financial'
+    get 'withdraws', action: :index,   controller: 'withdraws'
+    get 'reports',   action: :general, controller: 'reports'
 
     #
     # Reports JSON

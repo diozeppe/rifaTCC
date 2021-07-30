@@ -14,6 +14,14 @@ class Institutions::RegistrationsController < Devise::RegistrationsController
   def create
     @institution = Institution.new(institution_params)
 
+    if (params[:tos] == false || !params[:tos].present?)
+      respond_to do |format|
+      format.json {render :json => {:model => "", :error => {:tos => ["Você precisa aceitar os termos de uso"]}}, :status => 422}
+      format.html {render 'sign_up'}
+      end
+      return
+    end
+
     if @institution.save
       sign_in(resource)
       redirect_to profile_institution_path(resource)
@@ -95,6 +103,7 @@ class Institutions::RegistrationsController < Devise::RegistrationsController
       :account_number,
       :qualification,
       :about,
+      :tos,
       :site
       )
   end
