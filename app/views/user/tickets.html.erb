@@ -59,6 +59,10 @@
                            <div class="col-md-12">
                               <h5 class="text-center"><%= raffle.tickets_sold.to_s + '/' + raffle.tickets_number.to_s %></h5>
                            </div>
+                           <div class="col-md-12">
+                              <h5 class="text-center">Valor em compras:</h5>
+                              <h5 class="text-center">R$ <%= number_with_precision(raffle.unit_value * raffle.tickets.only_owned(@user).length, precision: 2) %></h5>
+                           </div>
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="default-border ms-4">
@@ -97,8 +101,8 @@
                      </div>
                   </div>
                </div>
-               <% end %>
             </div>
+            <% end %>
             <div align="center">
                <%= paginate @raffles %>
             </div>
