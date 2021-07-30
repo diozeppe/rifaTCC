@@ -64,6 +64,12 @@
                            <div class="col-md-12">
                               <h5 class="text-center"><%= raffle.tickets_sold.to_s + '/' + raffle.tickets_number.to_s %></h5>
                            </div>
+
+                           <div class="col-md-12">
+                              <h5 class="text-center">Valor arrecadado</h5>
+                              <h5 class="text-center">R$ <%= number_with_precision(raffle.unit_value * raffle.tickets_sold, precision: 2) %></h5>
+                           </div>
+
                            <% if !raffle.winner_ticket.nil? %>
                            <div class="row">
                               <h5 class="text-center">Número vencedor:</h5>

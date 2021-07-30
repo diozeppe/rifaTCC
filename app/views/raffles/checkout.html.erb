@@ -17,6 +17,11 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-md-12">
+					<p class="text-center"> Valor total: R$ <%= number_with_precision(@raffle.unit_value * @tickets.length, precision: 2) %></p>
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-md-6">
 					<div class="ms-1 mb-1">
 					<%= link_to 'Cancelar', raffles_cancel_path(@raffle), class: "btn btn-submit-adm" %>
