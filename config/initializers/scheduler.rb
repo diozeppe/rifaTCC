@@ -8,7 +8,7 @@ scheduler.every '5m' do
   puts 'Rodou o update'
 
   tickets_on_hold.each do |t|
-    t.update_at > 5.minutes.ago
+    t.updated_at > 5.minutes.ago
     t.user_id = 0
     t.ticket_status_id = 1
     t.save()
