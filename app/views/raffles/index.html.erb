@@ -42,7 +42,7 @@
                         <div class="row">
                            <div class="col-md-12">
                               <div class="d-flex justify-content-center">
-                                 <canvas class="raffleProgessChart" data-tickets-sold = "<%= raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (raffle.tickets_number - 0).to_s %>" style="width: 500px;"></canvas>
+                                 <canvas class="raffleProgessChart" data-tickets-sold = "<%= raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (raffle.tickets_number - raffle.tickets_sold).to_s %>" style="width: 500px;"></canvas>
                               </div>
                            </div>
                         </div>

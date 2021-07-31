@@ -30,9 +30,12 @@ class Institution::RafflesController < ApplicationController
 	  authorize @raffle, policy_class: RafflePolicy
 
 	  if @raffle.save
-
 	    params[:images].each do |img|
 	    	@raffle.images.attach(img[1])
+
+  			@raffle.tickets_number.times do |i|
+  			  Ticket.create(raffle_id: @raffle.id, number: i)
+  			end
 	    end
 	
 	  	redirect_to :institution_raffles, :notice => "Rifa criada com sucesso"
