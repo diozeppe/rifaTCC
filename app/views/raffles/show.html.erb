@@ -48,7 +48,7 @@
       <div class="row">
       <h2 class="text-center sub-group-form"> Situação </h2>
       <div class="d-flex justify-content-center">
-         <canvas class="raffleProgessChart" data-tickets-sold = "<%= @raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (@raffle.tickets_number - raffle.tickets_sold).to_s %>" style="width: 500px;"></canvas>
+         <canvas class="raffleProgessChart" data-tickets-sold = "<%= @raffle.tickets_sold.to_s %>" data-tickets-open = "<%= (@raffle.tickets_number - @raffle.tickets_sold).to_s %>" style="width: 500px;"></canvas>
       </div>
       <div class="row">
          <h5 class="text-center"><%= @raffle.tickets_sold.to_s + '/' + @raffle.tickets_number.to_s %></h5>
