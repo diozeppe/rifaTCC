@@ -62,7 +62,7 @@ function attachFormValidationReturn(){
 
 function attachNavbarFixedTopBehaviour(){
   window.addEventListener('scroll', function() {
-      if (window.scrollY > 120) {
+      if (window.scrollY > 170) {
         document.getElementById('navbar').classList.add('fixed-top');
         document.getElementById('navbar').classList.remove('navbar-initial');
         navbar_height = document.querySelector('.navbar').offsetHeight;
