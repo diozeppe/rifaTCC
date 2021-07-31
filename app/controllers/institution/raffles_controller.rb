@@ -24,9 +24,8 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def create
-	  authorize @institution, policy_class: RafflePolicy
-
 	  @raffle = Raffle.new(raffle_params)
+	  @raffle.institution = @institution
 
 	  authorize @raffle, policy_class: RafflePolicy
 

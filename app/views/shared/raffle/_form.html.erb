@@ -38,9 +38,9 @@
 </div>
 <div class='row'>
 	<div class="col-md-12">
-		<%= f.label :title, "Título", class: "form-label mt-1 rmb-1", maxlength: 100 %>
+		<%= f.label :title, "Título", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
-			<%= f.text_field :title, :class => 'form-control rounded-3' %>
+			<%= f.text_field :title, :class => 'form-control rounded-3', maxlength: 100 %>
 			<div id="title_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>
@@ -63,7 +63,7 @@
 	<div class="col-md-6">
 		<%= f.label :prize, "Prêmio", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
-			<%= f.text_field :prize, :class => 'form-control rounded-3', maxlength: 30 %>
+			<%= f.text_field :prize, :class => 'form-control rounded-3', maxlength: 50 %>
 			<div id="prize_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>
