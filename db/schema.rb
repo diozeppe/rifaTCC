@@ -103,8 +103,6 @@ ActiveRecord::Schema.define(version: 2021_07_10_204434) do
     t.integer "agency_number"
     t.integer "account_number"
     t.string "qualification"
-    t.string "city"
-    t.string "state"
     t.string "site"
     t.text "about"
     t.boolean "status", default: false
@@ -146,6 +144,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_204434) do
     t.integer "tickets_number", default: 0
     t.integer "tickets_sold", default: 0
     t.datetime "draw_date"
+    t.datetime "finish_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -192,8 +191,6 @@ ActiveRecord::Schema.define(version: 2021_07_10_204434) do
     t.string "zipCode"
     t.string "phone_number"
     t.string "cellphone_number"
-    t.string "city"
-    t.string "state"
     t.integer "city_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

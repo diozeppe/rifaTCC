@@ -28,10 +28,13 @@ var raffleImages;
 $(document).on('turbolinks:load', function(){
 
   setAlertbehaviour();
+
   attachNavbarFixedTopBehaviour();
   attachFooterFixedBottomBehaviour();
   attachRaffleFilesBeforeSubmit();
   attachFormValidationReturn();
+  attachGetCity();
+
   doDisableFrom();
   doInputFormating();
   doTicketInitialization();
@@ -62,10 +65,10 @@ function attachFormValidationReturn(){
 
 function attachNavbarFixedTopBehaviour(){
   window.addEventListener('scroll', function() {
+      var navbar_height = document.querySelector('.navbar').offsetHeight;
       if (window.scrollY > navbar_height) {
         document.getElementById('navbar').classList.add('fixed-top');
         document.getElementById('navbar').classList.remove('navbar-initial');
-        navbar_height = document.querySelector('.navbar').offsetHeight;
         document.body.style.paddingTop = navbar_height + 'px';
       } else {
         document.getElementById('navbar').classList.remove('fixed-top');
@@ -77,7 +80,6 @@ function attachNavbarFixedTopBehaviour(){
 
 function attachFooterFixedBottomBehaviour(){
   var hasVScroll = document.body.scrollHeight > document.body.clientHeight;
-
   if (!hasVScroll) {
     $('#footer').addClass('fixed-bottom');
   }
@@ -110,6 +112,16 @@ function attachRaffleFilesBeforeSubmit(){
 
 }
 
+function attachGetCity(){
+  $('.state-selection').on('change', function(e){
+    $.get(window.location.origin + '/get_cities_by_uf', { state_id: this.value }, function(data){
+      $(".city-selection").html('');
+      for (c in data) {
+        $(".city-selection").append(new Option(data[c].name, data[c].id));
+      }
+    });
+  });
+}
 
 function doDropZoneInitialization() {
   if ($('#raffleImages').length) {
@@ -181,9 +193,7 @@ function setSelectedTickets(){
 
 function showSelectedTickets(){
     var selected = getSelectedArray();
-
     $('#selected_tickets_list').html("");
-
     for(var i = 0; i < selected.length; i++){
        if (selected[i] != '') {
         $('#selected_tickets_list').html(document.getElementById('selected_tickets_list').innerHTML + '<div class="ticket ticket-on-hold" data-id="'+ selected[i] +'" onclick="removeTicketFromList('+selected[i]+');addTicketOpen('+selected[i]+');"><div class="ticket-number text-center">' + selected[i] + '</div></div>');

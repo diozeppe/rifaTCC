@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   post 'sign_in_institution', to: 'home#access_institution'
 
   #
+  # JSONs gerais
+  #
+  get 'get_cities_by_uf', to: 'application#get_cities_by_uf'
+
+  #
   # Processo principal de compra e acesso a campanhas
   #
   get  'raffles',                   to: 'raffles#index'

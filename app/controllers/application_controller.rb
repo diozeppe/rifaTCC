@@ -26,6 +26,16 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def get_cities_by_uf
+		state_id = params[:state_id]
+
+		cities = City.where('state_id = ?', state_id)
+
+		respond_to do |format|
+			format.json {render :json => cities.to_json(:only => [:id, :name])}
+		end
+	end
+
 	private
 
 	def user_not_authorized

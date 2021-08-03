@@ -12,8 +12,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     	t.string :zipCode
     	t.string :phone_number
     	t.string :cellphone_number
-      t.string  :city
-      t.string  :state
     	t.integer :city_id
 
       ## Recoverable

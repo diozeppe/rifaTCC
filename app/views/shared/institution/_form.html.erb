@@ -40,12 +40,6 @@
 		</div>	
 	</div>
 
-	<%= f.label :qualification, "Qualificação", class: "form-label mt-1 rmb-1" %>
-	<div class="input-group has-validation">
-		<%= f.text_field :qualification, :class => 'form-control rounded-3' %>
-		<div id="qualification_feedback" class="invalid-feedback"></div>
-	</div>
-
 	<div class="col-md-12"><h5 class="sub-group-form">Acesso</h5></div>
 	<div class="col-md-6">
 		<%= f.label :password, "Senha", class: "form-label mt-1 rmb-1" %>
@@ -101,19 +95,15 @@
 	</div>
 
 	<div class="col-md-6">
-		<%= f.label :city, "Cidade", class: "form-label mt-1 rmb-1" %>
-		<div class="input-group has-validation">
-			<%= f.text_field :city, :class => 'form-control rounded-3' %>
-			<div id="city_feedback" class="invalid-feedback"></div>
-		</div>
+		<%= f.label :state, "Estado", class: "form-label mt-1 rmb-1" %>
+		<%= collection_select(:raffle, :state, State.all, :id, :name, options = {:prompt => true, :selected => (model.city.nil? ? '' : model.city.state.id)}, html_options = {class: "form-select has-validation state-selection rounded-3"}) %>
+		<div id="state_feedback" class="invalid-feedback"></div>
 	</div>
 
 	<div class="col-md-6">
-		<%= f.label :state, "Estado", class: "form-label mt-1 rmb-1" %>
-		<div class="input-group has-validation">
-			<%= f.text_field :state, :class => 'form-control rounded-3', maxlength: 2 %>
-			<div id="state_feedback" class="invalid-feedback"></div>
-		</div>
+		<%= f.label :city, "Cidade", class: "form-label mt-1 rmb-1" %>
+		<%= collection_select(:raffle, :city, (model.city.nil? ? [] : model.city.state.cities), :id, :name, options = {:prompt => true, :selected => (model.city.nil? ? '' : model.city.id)}, html_options = {class: "form-select has-validation city-selection rounded-3"}) %>
+		<div id="city_feedback" class="invalid-feedback"></div>
 	</div>
 
 	<div class="col-md-12">

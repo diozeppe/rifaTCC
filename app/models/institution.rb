@@ -3,6 +3,8 @@ class Institution < ApplicationRecord
   
   has_many :raffles
 
+  belongs_to :city
+
   before_validation {
     self.cnpj = self.cnpj.tr('^0-9', '')
     self.zipCode = self.zipCode.tr('^0-9', '')

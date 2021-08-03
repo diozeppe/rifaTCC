@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_one :wallet
   has_many :tickets
 
+  belongs_to :city
+
   devise :database_authenticatable,
          :registerable,
          :confirmable,
