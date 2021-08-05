@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   #
   # JSONs gerais
   #
-  get 'get_cities_by_uf', to: 'application#get_cities_by_uf'
+  get 'get_cities_by_uf',   to: 'application#get_cities_by_uf'
+  get 'get_cities_by_cep',  to: 'application#get_cities_by_cep'
 
   #
   # Processo principal de compra e acesso a campanhas

@@ -36,6 +36,7 @@ module BRPopulate
       state["cities"].each do |city|
         c = City.new
         c.name = city["name"]
+        c.code = city["code"]
         c.state = state_obj
         c.capital = capital?(city, state)
         c.save

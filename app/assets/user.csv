@@ -1,5 +1,5 @@
 cpf;name;email;password;address;number;neighborhood;zipCode;phone_number;cellphone_number;confirmed_at;city_id
-9240456988;Giuseppe Ferrarini;giuseppe@gmail.com;123456;Rodovia Antonio Alceu Zielonka;1812;Planta Deodoro;83304305;4133567890;41997476150;Sun, 18 Jul 2021 20:04:26 -0300;100
+09240456988;Giuseppe Ferrarini;giuseppe@gmail.com;123456;Rodovia Antonio Alceu Zielonka;1812;Planta Deodoro;83304305;4133567890;41997476150;Sun, 18 Jul 2021 20:04:26 -0300;100
 16000152043;Heriksson Ferrazo;herik_ferrazo@gmail.com;123456;Rua Mario Pecanha;1012;Santa Felicidade;8053000;4133567890;48997178586;Sun, 18 Jul 2021 20:04:26 -0300;101
 15356177054;Joao Peçanha;peçanha@gmail.com;123456;Rua Antonio Carmo;872;Novo mundo;86589712;4133567890;61995769028;Sun, 18 Jul 2021 20:04:26 -0300;102
 59274193050;Roberta Alves;robertaA@gmail.com;123456;Alameda Paris;12;Boqueirao;87463648;4133567890;41981269249;Sun, 18 Jul 2021 20:04:26 -0300;103
@@ -9,11 +9,11 @@ cpf;name;email;password;address;number;neighborhood;zipCode;phone_number;cellpho
 26244102797;Teresinha Alana da Cunha;teresinhaalanadacunha..teresinhaalanadacunha@gruppoitalia.com.br;123456;Quadra 3;210;Del Lago I (Itapoã);71591165;6136784137;61995769028;Sun, 18 Jul 2021 20:04:26 -0300;107
 98064076870;Julia Carolina Pires;juliacarolinapires..juliacarolinapires@recnev.com.br;123456;Rua Tibagi;229;Alto;25961100;2125156941;21984521740;Sun, 18 Jul 2021 20:04:26 -0300;108
 98341515512;Vinicius Victor da Silva;vviniciusvictordasilva@eclatt.com.br;123456;Rua 15 de Julho;219;Sobral;69912020;6836975091;68983137611;Sun, 18 Jul 2021 20:04:26 -0300;109
-313075239;Danilo Fernando Rodrigues;ddanilofernandorodrigues@bernardino.co;123456;Travessa São Pedro;277;Loteamento Santa Ana;83604628;4138935210;41981269249;Sun, 18 Jul 2021 20:04:26 -0300;110
+00313075239;Danilo Fernando Rodrigues;ddanilofernandorodrigues@bernardino.co;123456;Travessa São Pedro;277;Loteamento Santa Ana;83604628;4138935210;41981269249;Sun, 18 Jul 2021 20:04:26 -0300;110
 12338363230;Isis Sueli Cardoso;isissuelicardoso__isissuelicardoso@plani.com.br;123456;Rua Alcobaça;562;Residencial Jardim Leblon;74455367;6239958700;62998825844;Sun, 18 Jul 2021 20:04:26 -0300;111
 55238822243;Gabriela Sophia Corte Real;gabrielasophiacortereal..gabrielasophiacortereal@gmx.com.br;123456;Rua Treze;469;Jardim Florianópolis;78055828;6528808526;65985073439;Sun, 18 Jul 2021 20:04:26 -0300;112
-7415868781;Luciana Analu Lara Sales;llucianaanalularasales@heinrich.com.br;123456;Quadra EQNP 24\/28 Módulo D;662;Ceilândia Sul (Ceilândia);72235534;6139066248;61986466001;Sun, 18 Jul 2021 20:04:26 -0300;113
-51998598705;Filipe Kevin Cauã Barros;filipekevincauabarros__filipekevincauabarros@barratravel.com.br;123456;Rua Pedro Andreazza 170;302;Centro;89560972;4927173479;49994171941;Sun, 18 Jul 2021 20:04:26 -0300;114
+07415868781;Luciana Analu Lara Sales;llucianaanalularasales@heinrich.com.br;123456;Quadra EQNP 24\/28 Módulo D;662;Ceilândia Sul (Ceilândia);72235534;6139066248;61986466001;Sun, 18 Jul 2021 20:04:26 -0300;113
+11560432047;Filipe Kevin Cauã Barros;filipekevincauabarros__filipekevincauabarros@barratravel.com.br;123456;Rua Pedro Andreazza 170;302;Centro;89560972;4927173479;49994171941;Sun, 18 Jul 2021 20:04:26 -0300;114
 92400505667;Aline Isadora Almada;aalineisadoraalmada@apso.org.br;123456;Rua Afonso Sarlo 249;589;Bento Ferreira;29050920;2736487379;27998410616;Sun, 18 Jul 2021 20:04:26 -0300;115
 94415021700;Henry Carlos Oliver Moura;henrycarlosolivermoura-98@patrilarm.com.br;123456;Rua 2-F;991;Benedito Bentes;57084638;8229563674;82989738785;Sun, 18 Jul 2021 20:04:26 -0300;116
 90264133781;Marcos Vinicius Erick Mateus Souza;miguelseverinoarthurmartins-74@brastek.com.br;123456;Rua Pedro de Lara;243;Taquara;22720185;2126400176;21984656204;Sun, 18 Jul 2021 20:04:26 -0300;117

@@ -33,7 +33,9 @@ $(document).on('turbolinks:load', function(){
   attachFooterFixedBottomBehaviour();
   attachRaffleFilesBeforeSubmit();
   attachFormValidationReturn();
-  attachGetCity();
+
+  attachGetCities();
+  attachGetViaCep();
 
   doDisableFrom();
   doInputFormating();
@@ -112,7 +114,7 @@ function attachRaffleFilesBeforeSubmit(){
 
 }
 
-function attachGetCity(){
+function attachGetCities(){
   $('.state-selection').on('change', function(e){
     $.get(window.location.origin + '/get_cities_by_uf', { state_id: this.value }, function(data){
       $(".city-selection").html('');
@@ -120,6 +122,38 @@ function attachGetCity(){
         $(".city-selection").append(new Option(data[c].name, data[c].id));
       }
     });
+  });
+}
+
+function attachGetViaCep(){
+  $('.cep-form').on('change', function(e){
+    if (this.value.length == 9) {
+      $.get(window.location.origin + '/get_cities_by_cep', { cep: this.value }, function(data){
+
+        var error = false;
+
+        try{error = data.erro;}catch(e){};
+
+        if (error){
+          $('.cep-form')[0].className += ' is-invalid';
+          $('#zipCode_feedback').html('CEP não encontrado ou inválido');
+        }
+        else{
+          $('[name*="address"]')[0].value = data.viacep.logradouro
+          $('[name*="neighborhood"]')[0].value = data.viacep.bairro
+          $('[name*="complement"]')[0].value = data.viacep.complemento
+
+          var cities = JSON.parse(data.cities);
+
+          for (c in cities) {
+            $(".city-selection")[0].append(new Option(cities[c].name, cities[c].id));
+          }
+
+          $('.state-selection')[0].value = data.state_id
+          $('.city-selection')[0].value = data.city_id;;
+        }
+      });
+    }
   });
 }
 

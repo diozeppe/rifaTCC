@@ -94,7 +94,7 @@
 
 	<%= f.label :zipCode, "CEP", class: "form-label mt-1 rmb-1" %>
 	<div class="input-group has-validation">
-		<%= f.text_field :zipCode, :class => 'form-control rounded-3', "data-mask": "00000-000", "placeholder": "000000-000" %>
+		<%= f.text_field :zipCode, :class => 'form-control rounded-3 cep-form', "data-mask": "00000-000", "placeholder": "000000-000" %>
 		<div id="zipCode_feedback" class="invalid-feedback"></div>
 	</div>
 

@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_07_10_204434) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
+    t.string "code"
     t.boolean "capital"
     t.integer "state_id"
     t.datetime "created_at", null: false

@@ -36,6 +36,44 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def get_cities_by_cep
+		cep = params[:cep].tr('^0-9', '')
+
+    	if cep.length != 8
+    		respond_to do |format|
+    			format.json {render :json => viacep_response}
+    		end
+    		return
+    	end
+
+    	http = Net::HTTP.new('viacep.com.br', 80)
+
+    	viacep_response = JSON.parse http.get('/ws/' + cep + '/json/').body
+
+    	puts 'Retorno ' + viacep_response.to_s
+
+    	if viacep_response['erro'] == true
+    		respond_to do |format|
+    			format.json {render :json => viacep_response}
+    		end
+    		return
+    	end
+
+		code = viacep_response['ibge']
+
+		city = City.find_by(:code => code)
+
+		cities = city.state.cities
+
+		respond_to do |format|
+			format.json {render :json => {:state_id => city.state_id,
+				                          :city_id  => city.id,
+				                          :cities   => cities.to_json(:only => [:id, :name]),
+				                          :viacep   => viacep_response
+				                      	 }}
+		end
+	end
+
 	private
 
 	def user_not_authorized
