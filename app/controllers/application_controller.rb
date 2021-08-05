@@ -50,8 +50,6 @@ class ApplicationController < ActionController::Base
 
     	viacep_response = JSON.parse http.get('/ws/' + cep + '/json/').body
 
-    	puts 'Retorno ' + viacep_response.to_s
-
     	if viacep_response['erro'] == true
     		respond_to do |format|
     			format.json {render :json => viacep_response}
