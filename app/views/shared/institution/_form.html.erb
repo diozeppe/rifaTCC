@@ -140,7 +140,8 @@
 	<div class="col-md-4">
 		<%= f.label :bank_number, "Banco", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
-			<%= f.text_field :bank_number, :class => 'form-control rounded-3', "data-mask": "999" %>
+			<%= f.text_field :bank_number, :list => 'bankList', :class => 'form-control rounded-3', "data-mask": "999" %>
+			<%= render 'shared/institution/bank_list' %>
 			<div id="bank_number_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>

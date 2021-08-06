@@ -6,9 +6,9 @@ class RafflesController < ApplicationController
 	  @validation = validate_filters
 
 	  if @validation.empty?
-	  	@raffles = get_filters.page(params[:page])
+	  	@raffles = get_filters.page(params[:page]).order('created_at')
 	  else
-	  	@raffles = Raffle.only_active.page(params[:page])
+	  	@raffles = Raffle.only_active.page(params[:page]).order('created_at')
 	  end
 	end
 
@@ -22,9 +22,9 @@ class RafflesController < ApplicationController
 	  @tickets = @raffle.tickets.only_owned_on_hold(@user)
 
 	  if (!@tickets.empty?)
-	  	redirect_to raffles_checkout_path(@raffle)
+	  	redirect_to raffles_checkout_path(@raffle).order('number')
 	  else
-	  	@tickets = @raffle.tickets.only_open.page(params[:page])
+	  	@tickets = @raffle.tickets.only_open.page(params[:page]).order('number')
 	  end
 	end
 

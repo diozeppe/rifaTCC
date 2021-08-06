@@ -151,6 +151,9 @@ function attachGetViaCep(){
 
           $('.state-selection')[0].value = data.state_id
           $('.city-selection')[0].value = data.city_id;;
+
+          $("div#raffleImages").removeClass('invalid');
+          $('#zipCode_feedback').html('');
         }
       });
     }

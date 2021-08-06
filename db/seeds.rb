@@ -249,7 +249,7 @@ raffles.each do |r|
   t = []
 
   r.tickets_number.times do |i|
-    t2 = Ticket.create(raffle_id: r.id, number: i+1)
+    t2 = Ticket.create(raffle_id: r.id, number: i)
     puts t2.errors.full_messages 
     t << t2
   end
