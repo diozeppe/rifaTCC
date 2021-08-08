@@ -8,14 +8,10 @@ class RafflePolicy < ApplicationPolicy
 
   def index?
     if (controller_name = 'institution/raffles')
-      if @user.instance_of? Institution # E um instituicao
-        if @user = @record
-          return true
-        else
-          return false
-        end
+      if @user.instance_of? Institution 
+        return true 
       else
-        return false
+        return false # E um instituicao
       end
     end
     return true
@@ -55,7 +51,7 @@ class RafflePolicy < ApplicationPolicy
  #
  def confirm_received?
     if @user.instance_of? User 
-      if user == record.winner_ticket.user
+      if @user == record.winner_ticket.user
         return true
       end
     end
@@ -67,7 +63,7 @@ class RafflePolicy < ApplicationPolicy
  #
  def confirm_sended?
     if @user.instance_of? Institution 
-      if user == record.institution
+      if @user == record.institution
         return true
       end
     end
@@ -90,29 +86,15 @@ class RafflePolicy < ApplicationPolicy
   end
 
   def update?
-    if @user.instance_of? Admin # e admin?
-      return true
-    elsif @user.instance_of? Institution # E um instituicao
-      if record.institution = user # A rifa pertence a intituicao logada
-        return true
-      end
-    end
-    false
+    create?
   end
 
   def edit?
-    update?
+    create?
   end
 
   def destroy?
-    if @user.instance_of? Admin # e admin?
-      return true
-    elsif @user.instance_of? Institution # E um instituicao
-      if record.institution = user # A rifa pertence a intituicao logada
-        return true
-      end
-    end
-    false
+    create?
   end
 
   class Scope

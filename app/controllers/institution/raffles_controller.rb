@@ -3,7 +3,7 @@ class Institution::RafflesController < ApplicationController
 	before_action :set_raffle, only: [:edit, :update, :show, :destroy]
 
 	def index
-	  authorize @institution, policy_class: RafflePolicy
+	  authorize Raffle
 
 	  @validation = validate_filters
 
@@ -15,19 +15,21 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def new
-	  authorize @institution, policy_class: RafflePolicy
 	  @raffle = Raffle.new
+	  @raffle.institution = @institution
+
+	  authorize @raffle
 	end
 
 	def edit
-	  
+		authorize @raffle
 	end
 
 	def create
 	  @raffle = Raffle.new(raffle_params)
 	  @raffle.institution = @institution
 
-	  authorize @raffle, policy_class: RafflePolicy
+	  authorize @raffle
 
 	  if @raffle.save
 	    params[:images].each do |img|
@@ -49,6 +51,8 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def update
+	  authorize @raffle
+
 	  if @raffle.update(raffle_params)
 	  	flash[:sucess] = "Usuario atualizado com sucesso"
 	  	redirect_to raffles_show(@raffle)
@@ -66,6 +70,8 @@ class Institution::RafflesController < ApplicationController
 	end
 
 	def destroy
+	  authorize @raffle
+
 	  @raffle.destroy
 	  flash[:danger] = "Rifa deletada com sucesso"
 	  redirect_to raffles_path

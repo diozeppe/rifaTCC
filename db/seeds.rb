@@ -95,7 +95,6 @@ end
 RaffleStatus.create(:description => 'Aberto');
 RaffleStatus.create(:description => 'Sorteado');
 RaffleStatus.create(:description => 'Aguardando entrega');
-RaffleStatus.create(:description => 'Aguardando saque');
 RaffleStatus.create(:description => 'Cancelado');
 
 #

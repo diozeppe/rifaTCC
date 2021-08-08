@@ -118,7 +118,7 @@
 		<%= f.label :tickets_number, "Quantidade de números", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
 			<span class="material-icons input-group-text">label</span>
-			<%= f.text_field :tickets_number, :class => 'form-control rounded-3', "data-mask": "9999"%>
+			<%= f.select(:tickets_number, Raffle::TICKETS_NUMBER_OPTIONS, options = {:prompt => false}, class: "form-select has-validation rounded-3") %>
 			<div id="tickets_number_feedback" class="invalid-feedback"></div>
 		</div>
 	</div>
@@ -140,7 +140,7 @@
 <div class="col-md-12"><h5 class="sub-group-form">Imagens</h5></div>
 <div class="row">
 	<div class="col-md-12">
-		<div id="raffleImages" >
+		<div id="raffleImages">
 			
 		</div>
 	</div>
