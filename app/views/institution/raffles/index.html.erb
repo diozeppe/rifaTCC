@@ -36,8 +36,11 @@
                            <h5 class="card-title"><%= raffle.title %></h5>
                            <p class="card-text"><%= raffle.description %></p>
                            <p class="card-text"><small>Situação: <%= raffle.raffle_status.description %></small></p>
-                           <p class="card-text"><small>Categoria: <%= raffle.category.name %></small></p>
                            <p class="card-text"><small class="text-muted">Data do sorteio: <%= raffle.draw_date.strftime('%d/%m/%Y') %></small></p>
+                           <p><small class="text-muted">Categoria: <%= raffle.category.name %></small></p>
+                           <p><small class="text-muted">Condição: <%= raffle.condition.name %></small></p>
+                           <p><small class="text-muted">Entrega: <%= raffle.delivery_type.name %>
+                           </small></p></small></p>
                            <% if !raffle.winner_ticket.nil? %>
                            <h5 class="card-title">Informações do vencedor</h5>
                            <p class="card-text">Nome: <%= raffle.winner_ticket.user.name %></p>

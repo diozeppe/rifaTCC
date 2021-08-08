@@ -148,7 +148,7 @@
 
 
 	<div class="col-md-4">
-		<%= f.label :agency_number, "Agência", class: "form-label mt-1 rmb-1" %>
+		<%= f.label :agency_number, "Agência (com dígito)", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
 			<%= f.text_field :agency_number, :class => 'form-control rounded-3', "data-mask": "99999-9" %>
 			<div id="agency_number_feedback" class="invalid-feedback"></div>
@@ -156,7 +156,7 @@
 	</div>
 
 	<div class="col-md-4">
-		<%= f.label :account_number, "Conta", class: "form-label mt-1 rmb-1" %>
+		<%= f.label :account_number, "Conta (com dígito)", class: "form-label mt-1 rmb-1" %>
 		<div class="input-group has-validation">
 			<%= f.text_field :account_number, :class => 'form-control rounded-3', "data-mask": "999999999-9" %>
 			<div id="account_number_feedback" class="invalid-feedback"></div>

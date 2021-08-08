@@ -33,6 +33,7 @@ $(document).on('turbolinks:load', function(){
   attachFooterFixedBottomBehaviour();
   attachRaffleFilesBeforeSubmit();
   attachFormValidationReturn();
+  attachClearSessionList();
 
   attachGetCities();
   attachGetViaCep();
@@ -157,6 +158,13 @@ function attachGetViaCep(){
         }
       });
     }
+  });
+}
+
+function attachClearSessionList(){
+  $("#finish_buy_link").on('click', function (e) {
+    setSelectedArray('');
+    return true;
   });
 }
 
@@ -343,11 +351,11 @@ function doChartInitialization(){
     var myPieChart = new Chart(ctxP, {
       type: 'doughnut',
       data: {
-        labels: ["Vendidos", "Em Aberto"],
+        labels: ["Vendidos", "Disponíveis"],
         datasets: [{
           data: [this.getAttribute('data-tickets-sold'), this.getAttribute('data-tickets-open')],
-          backgroundColor: ["#fed18c", "#fe664f"],
-          hoverBackgroundColor: ["#ffa926", "#ff3112"]
+          backgroundColor: ["#fed18c", "#a3eb8d"],
+          hoverBackgroundColor: ["#ffa926", "#95d980"]
         }]
       },
       options: {

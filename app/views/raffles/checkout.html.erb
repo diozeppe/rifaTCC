@@ -1,3 +1,4 @@
+<%= hidden_field_tag 'session_id', @raffle.id %>
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
@@ -29,7 +30,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="me-1">
-					<%= link_to 'Comprar', raffles_finish_path(@raffle), class: "btn btn-submit-adm"%>
+					<%= link_to 'Comprar', raffles_finish_path(@raffle), id: "finish_buy_link", class: "btn btn-submit-adm"%>
 					</div>
 				</div>
 			</div>
