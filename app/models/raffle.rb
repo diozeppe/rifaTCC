@@ -46,7 +46,7 @@ class Raffle < ApplicationRecord
 
   validate :valid_draw_date?
 
-  validate :valid_tickets_number
+  validate :valid_tickets_number?
 
   def valid_draw_date?
     errors.add(:draw_date, 'Data inválida') if (draw_date.nil?)
