@@ -51,23 +51,23 @@ scheduler.every '1m' do
         #
         # Email para a instituição
         #
-        InstitutionMailer.with(institution: raffle.institution, raffle: raffle).raffle_drew.deliver_later
+        #InstitutionMailer.with(institution: raffle.institution, raffle: raffle).raffle_drew.deliver_later
 
         #
         # Email do ganhador
         #
-        winner_user = User.find(winner_ticket.user_id);
+        #winner_user = User.find(winner_ticket.user_id);
 
-        UsersMailer.with(user: winner_ticket.user, raffle: raffle).raffle_result_winner.deliver_later
+        #UsersMailer.with(user: winner_ticket.user, raffle: raffle).raffle_result_winner.deliver_later
 
         #
         # Email dos outros usuarios
         #
-        other_users = User.get_except_winner(raffle, winner_ticket.user)
+        #other_users = User.get_except_winner(raffle, winner_ticket.user)
 
-        other_users.each do |user|
-          UsersMailer.with(user: user, raffle: raffle).raffle_result_loss.deliver_later
-        end
+        #other_users.each do |user|
+        #  UsersMailer.with(user: user, raffle: raffle).raffle_result_loss.deliver_later
+        #end
 
         r.save()
         break
