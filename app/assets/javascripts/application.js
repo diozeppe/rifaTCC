@@ -34,6 +34,7 @@ $(document).on('turbolinks:load', function(){
   attachRaffleFilesBeforeSubmit();
   attachFormValidationReturn();
   attachClearSessionList();
+  attachRaffleImageListBehaviour();
 
   attachGetCities();
   attachGetViaCep();
@@ -79,6 +80,24 @@ function attachNavbarFixedTopBehaviour(){
         document.body.style.paddingTop = '0';
       } 
   });
+}
+
+function attachRaffleImageListBehaviour(){
+  $('.raffle-list-image').each(function(){
+    this.addEventListener('mouseover', function(){
+      $('#raffle_show_main_image img').attr('src', this.getAttribute('src'));
+
+      $('.raffle-list-image').each(function(){
+        this.classList.remove('tomato-border');
+        this.classList.add('default-border');
+      });
+      
+      this.classList.remove('default-border');
+      this.classList.add('tomato-border');
+      
+    });
+  });
+
 }
 
 function attachFooterFixedBottomBehaviour(){

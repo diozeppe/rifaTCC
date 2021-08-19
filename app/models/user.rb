@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def get_address_formated
-    self.address + ', ' + self.number + ' - ' + self.neighborhood + ', ' + self.city + ' - ' + self.state + ', ' + self.cep_formated
+    self.address + ', ' + self.number + ' - ' + self.neighborhood + ', ' + self.city.name + ' - ' + self.city.state.name + ', ' + self.cep_formated
   end
 
   private

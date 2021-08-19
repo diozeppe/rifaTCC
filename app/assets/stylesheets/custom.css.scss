@@ -5,9 +5,9 @@
 
 $body-background-color: #df6f2f2;
 
-$orange-background-color: rgb(254,209,140);
-$tomato-background-color: rgb(254,101,79);
-$brown-background-color: #AA8774;
+$orange-color: rgb(254,209,140);
+$tomato-color: rgb(254,101,79);
+$brown-color: #AA8774;
 
 $pagination-bg: black;
 
@@ -44,7 +44,7 @@ input[type=number] {
 /* Rules by ID */
 
 #pessoaFisicaLogin {
-background: $tomato-background-color;
+background: $tomato-color;
 background: linear-gradient(0deg, rgba(254,217,155,1) 0%, rgba(254,217,155,1) 35%, rgba(254,217,155,1) 100%);
 }
 
@@ -63,21 +63,21 @@ padding-left: 10px;
 }
 
 #sidebar_menu {
- background: $orange-background-color;
- border-color: $orange-background-color;
+ background: $orange-color;
+ border-color: $orange-color;
  border-size: 2px;
  border-style: solid;
  border-radius: 5px;
 }
 
 #sidebar_menu a.active {
-  background: $brown-background-color;
-  border-color: $brown-background-color;
+  background: $brown-color;
+  border-color: $brown-color;
 }
 
 #raffle_filters {
- background: $orange-background-color;
- border-color: $orange-background-color;
+ background: $orange-color;
+ border-color: $orange-color;
  border-size: 2px;
  border-style: solid;
  border-radius: 5px;
@@ -119,18 +119,27 @@ padding-left: 10px;
 }
 
 #main_admin table thead{
-background-color: #2f2f2f;
-color: white;
+  background-color: #2f2f2f;
+  color: white;
 }
 
 #main_admin table thead th{
-border-left: 0;
-border-right: 0;
+  border-left: 0;
+  border-right: 0;
 }
 
 #main_admin table tbody td{
-border-left: 0;
-border-right: 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+#raffle_show_main_image {
+  height: 500px;
+  display: flex;
+}
+
+#raffle_show_main_image img{
+  margin: auto;
 }
 
 /* Rules by Class */
@@ -160,7 +169,7 @@ float: right;
 }
 
 .with-main-border{
- border-color: $orange-background-color;
+ border-color: $orange-color;
  border-size: 2px;
  border-style: solid;
  border-radius: 5px;
@@ -187,40 +196,40 @@ float: right;
 }
 
 .vertical-center {
-min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-min-height: 60vh; /* These two lines are counted as one :-)       */
-display: flex;
-align-items: center;
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 60vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
 }
 
 .card {
- border-color: $orange-background-color !important;
+ border-color: $orange-color !important;
  border-width: 3px !important;
  border-style: solid !important;
  border-radius: 5px !important;
 }
 
 .square:after{
-content: "";
-display: block;
-padding-top: 15%;  /* initial ratio of 1:1*/
+  content: "";
+  display: block;
+  padding-top: 15%;  /* initial ratio of 1:1*/
 }
 
 .square:before{
-content: "";
-display: block;
-padding-top: 15%;  /* initial ratio of 1:1*/
+  content: "";
+  display: block;
+  padding-top: 15%;  /* initial ratio of 1:1*/
 }
 
 .error-panel {
-  background: $tomato-background-color;
+  background: $tomato-color;
 }
 
 .ticket {
   height: 50px;
   width: 60px;
   margin: 1em;
-  background-color: $tomato-background-color;
+  background-color: $tomato-color;
   cursor: pointer;
 }
 
@@ -229,39 +238,61 @@ padding-top: 15%;  /* initial ratio of 1:1*/
 }
 
 .ticket-open{
-  background: $brown-background-color
+  background: $brown-color;
 }
 .ticket-on-hold{
-  background: $orange-background-color;
+  background: $orange-color;
+}
+
+.raffle-show-column {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.raffle-list-image {
+  height: 150px;
+  width:  150px;
+  cursor: pointer;
+}
+
+.img-center {
+  margin: 0 auto;
 }
 
 .default-border {
- border-color: $orange-background-color;
+ border-color: $orange-color;
+ border-size: 2px;
+ border-style: solid;
+ border-radius: 5px;
+}
+
+.tomato-border {
+ border-color: $tomato-color;
  border-size: 2px;
  border-style: solid;
  border-radius: 5px;
 }
 
 .btn-submit {
-background: $brown-background-color;
+background: $brown-color;
 color: white;
 width: 80%;
 }
 
 .btn-submit-adm {
-background: $brown-background-color;
+background: $brown-color;
 color: white;
 width: 100%;
 }
 
 .btn-action {
-background: $brown-background-color;
+background: $brown-color;
 color: white;
 }
 
 .sub-group-form {
 margin-top: 1em;
-background: $orange-background-color;
+background: $orange-color;
 }
 
 .rmb-1{

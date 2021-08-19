@@ -69,7 +69,7 @@ scheduler.every '1m' do
         #  UsersMailer.with(user: user, raffle: raffle).raffle_result_loss.deliver_later
         #end
 
-        r.save()
+        raffle.save()
         break
       end
     end
