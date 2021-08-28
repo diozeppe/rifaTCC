@@ -243,6 +243,10 @@ function setSelectedArray(strArr){
 function getSelectedArray(){
   try{
       var selected = sessionStorage.getItem('selected_tickets' + $('#session_id').val(), '').split(';');
+
+      if (selected.length == 1 && (selected.includes('') || selected.includes('undefined'))) {
+        selected = [];
+      }
   }catch (e){
       var selected = [];
   }

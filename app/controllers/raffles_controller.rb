@@ -144,8 +144,8 @@ class RafflesController < ApplicationController
 		#
 		# Atualiza unidades vendidas da rifa
 		#
-		@raffle.tickets_sold += @tickets.length
-		@raffle.save()
+		@raffle.tickets_sold = @raffle.get_sold_tickets_count
+		@raffle.save(validate: false)
 
 		#
 		# Enviamos um email ao usuario
