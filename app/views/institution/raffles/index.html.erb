@@ -7,7 +7,7 @@
          <%= render 'shared/institution/sidebar_menu_filters' %>
       </div>
    </div>
-   <div class="col-md-8">
+   <div class="col-md-9">
       <div class="row">
          <h1 class="text-center">Minhas Rifas</h1>
       </div>
@@ -74,7 +74,7 @@
                            </div>
 
                            <% if !raffle.winner_ticket.nil? %>
-                           <div class="row">
+                           <div class="col-md-12">
                               <h5 class="text-center">Número vencedor:</h5>
                               <div class="d-flex justify-content-center">
                                  <div class="ticket ticket-on-hold">
@@ -85,13 +85,13 @@
                            <% end %>
                            <div class="row">
                               <div class="d-flex justify-content-center">
-                                 <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle), :class => 'btn btn-submit-adm' %>
+                                 <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle), :class => 'btn btn-submit-adm ms-4 mb-2' %>
                               </div>
                            </div>
                            <% if !raffle.winner_ticket.nil? && raffle.raffle_status_id == 2 %>
                            <div class="row">
                               <div class="d-flex justify-content-center mt-1">
-                                 <%= link_to 'Confirmar envio', confirm_sended_institution_path(raffle.id), :class => 'btn btn-submit-adm' %>
+                                 <%= link_to 'Confirmar envio', confirm_sended_institution_path(raffle.id), :class => 'btn btn-submit-adm ms-4 mb-2' %>
                               </div>
                            </div>
                            <% end %>

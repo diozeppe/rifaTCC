@@ -7,12 +7,12 @@
          <%= render 'shared/user/sidebar_menu_filters' %>
       </div>
    </div>
-   <div class="col-md-8">
+   <div class="col-md-9">
       <div class="row">
-         <h1 class="text-center">Minhas compras</h1>
+         <h1 class="text-center mt-2">Minhas compras</h1>
       </div>
       <div class="row">
-         <div id="intitution-raffles-list" class="pt-3">
+         <div id="intitution-raffles-list">
             <% @raffles.each do |raffle| %>
             <div class="card my-2">
                <div class="raffle-card">
@@ -86,10 +86,8 @@
                                     </div>
                                  </div>
                                  <% end %>
-                                 <div class="row">
-                                    <div class="d-flex justify-content-center ms-1 my-1">
+                                    <div class="d-flex justify-content-center ms-4 my-1">
                                        <%= link_to 'Visualizar', raffles_show_path(raffle.id), :class => 'btn btn-submit-adm' %>
-                                    </div>
                                  </div>
                                  <% if !raffle.winner_ticket.nil? && raffle.raffle_status_id == 3 %>
                                  <div class="row">
