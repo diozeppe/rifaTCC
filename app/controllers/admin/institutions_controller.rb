@@ -84,6 +84,8 @@ class Admin::InstitutionsController < ApplicationController
 			flash[:danger] = "Problema ao aprovar Instituição"
 		end
 
+		#InstitutionMailer.with(institution: @institution).institution_approved.deliver_later
+
 		redirect_to admin_institutions_path
 	end
 

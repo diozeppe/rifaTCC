@@ -16,4 +16,9 @@ class InstitutionsMailer < ActionMailer::Base
     mail(to: @institution.email, subject: "O ganhador confirmou o recebimento: " + @raffle.title)
   end
 
+  def institution_approved
+    @institution = params[:institution]
+    mail(to: @institution.email, subject: "Seu cadastro foi aprovado")
+  end
+
 end
