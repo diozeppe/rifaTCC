@@ -9,11 +9,11 @@
    </div>
    <div class="col-md-9">
       <div class="row">
-         <h1 class="text-center">Minhas Rifas</h1>
+         <h1 class="text-center">Minhas Campanhas</h1>
       </div>
       <div class="row">
          <div class="col-md-3">
-            <%= link_to 'Nova Rifa', new_institution_raffle_path, :class => 'btn btn-action mt-3' %>
+            <%= link_to 'Nova Campanha', new_institution_raffle_path, :class => 'btn btn-action mt-3' %>
          </div>
       </div>
       <div class="row">
@@ -87,6 +87,9 @@
                               <div class="d-flex justify-content-center">
                                  <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle), :class => 'btn btn-submit-adm ms-4 mb-2' %>
                               </div>
+                           <div class="p-2 bd-highlight">
+                             <%= social_share_button_tag('Ajude nesta campanha: ' + @raffle.title, :url =>  raffles_show_url(@raffle.id), desc: 'Ajude nessa campanha:') %>
+                           </div>
                            </div>
                            <% if !raffle.winner_ticket.nil? && raffle.raffle_status_id == 2 %>
                            <div class="row">

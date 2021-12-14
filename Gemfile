@@ -46,6 +46,9 @@ gem 'dropzonejs-rails'
 # Use Puma as the app server
 gem 'puma'
 
+# 
+gem 'social-share-button'
+
 # Icones Material Design
 gem 'material_icons'
 

@@ -40,7 +40,7 @@ class Institution::RafflesController < ApplicationController
   			end
 	    end
 	
-	  	redirect_to :institution_raffles, :notice => "Rifa criada com sucesso"
+	  	redirect_to :institution_raffles, :notice => "Campanha criada com sucesso"
 	  else
 		respond_to do |format|
 		format.json {render :json => {:model => @raffle.class.name.downcase, :error => @raffle.errors.as_json}, :status => 422}
@@ -73,7 +73,7 @@ class Institution::RafflesController < ApplicationController
 	  authorize @raffle
 
 	  @raffle.destroy
-	  flash[:danger] = "Rifa deletada com sucesso"
+	  flash[:danger] = "Campanha deletada com sucesso"
 	  redirect_to raffles_path
 	end
 

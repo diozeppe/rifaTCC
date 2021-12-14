@@ -14,6 +14,7 @@
 //= require jquery.mask
 //= require jquery-ui
 //= require jquery-ui/i18n/datepicker-pt-BR
+//= require social-share-button
 //= require Chart.min
 //= require dropzone
 //= require bootstrap-sprockets

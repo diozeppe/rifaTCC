@@ -54,7 +54,7 @@
 						<td><%= raffle.created_at.strftime('%m/%d/%Y') %></td>
 						<td><%= raffle.draw_date.strftime('%m/%d/%Y') %></td>
 						<td><%= link_to '<i class="material-icons">visibility</i>'.html_safe, admin_raffle_path(raffle), :class => 'btn' %></td>
-						<td><%= link_to '<i class="material-icons">delete</i>'.html_safe, admin_raffle_path(raffle),  method: :delete, data: {confirm: "Tem certeza que deseja excluir a rifa?"}, :class => 'btn' %></td>
+						<td><%= link_to '<i class="material-icons">delete</i>'.html_safe, admin_raffle_path(raffle),  method: :delete, data: {confirm: "Tem certeza que deseja excluir a campanha?"}, :class => 'btn' %></td>
 					</tr>
 					<% end %> 	
 				</tbody>
