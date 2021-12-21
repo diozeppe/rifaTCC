@@ -45,8 +45,8 @@
 						<td><%= institution.social_reason %></td>
 						<td><%= CNPJ.new(institution.cnpj).formatted %></td>
 						<td><%= number_to_phone(institution.phone_number, area_code: true, pattern: /(\d{2})(\d{4})(\d{4})$/)  %></td>
-						<td><%= institution.address %></td>
-						<td><%= institution.number %></td>
+						<td><%= institution.address + ', ' + institution.number %></td>
+						<td><%= institution.city.name + '/' + institution.city.state.acronym %></td>
 						<td><%= institution.email %></td>
 						<td><%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_admin_institution_path(institution), :class => 'btn' %></td>
 						<td><%= link_to '<i class="material-icons">delete</i>'.html_safe, admin_institution_path(institution),  method: :delete, data: {confirm: "Tem certeza que deseja excluir a instituicao?"}, :class => 'btn' %></td>
