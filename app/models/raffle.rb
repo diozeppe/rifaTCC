@@ -63,7 +63,7 @@ class Raffle < ApplicationRecord
   end
 
   def get_sold_tickets_count
-    self.tickets.where(tickets: {ticket_status_id:  3}).distinct.length
+    self.tickets.where(tickets: {ticket_status_id:  3}).distinct.size;
   end
 
 end
