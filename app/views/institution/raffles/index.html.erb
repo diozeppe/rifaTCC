@@ -88,7 +88,7 @@
                                  <%= link_to 'Visualizar'.html_safe, raffles_show_path(raffle), :class => 'btn btn-submit-adm ms-4 mb-2' %>
                               </div>
                            <div class="p-2 bd-highlight">
-                             <%= social_share_button_tag('Ajude nesta campanha: ' + @raffle.title, :url =>  raffles_show_url(@raffle.id), desc: 'Ajude nessa campanha:') %>
+                             <%= social_share_button_tag('Ajude nesta campanha: ' + raffle.title, :url =>  raffles_show_url(raffle.id), desc: 'Ajude nessa campanha:') %>
                            </div>
                            </div>
                            <% if !raffle.winner_ticket.nil? && raffle.raffle_status_id == 2 %>
