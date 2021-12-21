@@ -64,7 +64,7 @@ class Admin::InstitutionsController < ApplicationController
 
 		flash[:danger] = "Instituição deletada com sucesso"
 
-		redirect_to institutions_path
+		redirect_to :admin_root, :notice => "Instituição deletada com sucesso"
 	end
 
 	def institutions_approval

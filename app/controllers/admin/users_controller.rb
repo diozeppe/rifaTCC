@@ -61,7 +61,7 @@ class Admin::UsersController < ApplicationController
 
 		flash[:danger] = "Usuário deletado com sucesso"
 
-		redirect_to users_path
+		redirect_to :admin_root, :notice => "Usuário deletada com sucesso"
 	end
 
 	def profile
