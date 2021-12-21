@@ -58,13 +58,13 @@ class Admin::InstitutionsController < ApplicationController
 	end
 
 	def destroy
-		authorize institution
+		authorize Institution
 
 		@institution.destroy
 
 		flash[:danger] = "Instituição deletada com sucesso"
 
-		redirect_to :admin_root, :notice => "Instituição deletada com sucesso"
+		redirect_to admin_institutions_path, :notice => "Instituição deletada com sucesso"
 	end
 
 	def institutions_approval
@@ -86,7 +86,7 @@ class Admin::InstitutionsController < ApplicationController
 
 		#InstitutionMailer.with(institution: @institution).institution_approved.deliver_later
 
-		redirect_to admin_institutions_path
+		redirect_to admin_institutions_approval_path
 	end
 
 	private
