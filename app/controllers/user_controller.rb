@@ -55,7 +55,7 @@ class UserController < ApplicationController
 		#
 		# Define como aguardando saque
 		#
-		@raffle.raffle_status_id = 4
+		@raffle.raffle_status_id = 5
 		@raffle.save()
 
 		#
