@@ -53,9 +53,9 @@ class UserController < ApplicationController
 		authorize @raffle, policy_class: RafflePolicy
 
 		#
-		# Define como aguardando saque
+		# Define como aguardando finalizado
 		#
-		@raffle.raffle_status_id = 5
+		@raffle.raffle_status_id = 6
 		@raffle.save()
 
 		#

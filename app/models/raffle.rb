@@ -4,7 +4,7 @@ class Raffle < ApplicationRecord
   TICKETS_NUMBER_OPTIONS = [100, 1000]
 
   scope :only_active, -> { where('raffle_status_id = ?', 1)}
-  scope :only_finished, -> { where('raffle_status_id = ?', 4)}
+  scope :only_finished, -> { where('raffle_status_id = ?', 6)}
   scope :has_ticket_owned_by_user, -> (user_id) {joins(:tickets).where(tickets: {user: user_id, ticket_status_id:  3}).distinct}
 
   belongs_to :institution
