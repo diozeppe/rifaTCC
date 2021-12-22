@@ -15,7 +15,7 @@ scheduler.every '5m' do
   end
 end
 
-scheduler.every '1m' do
+scheduler.every '5m' do
   raffles_to_set_result = Raffle.where('raffle_status_id = ? AND draw_date < ?', 1, DateTime.now)
 
   puts 'Buscando rifas para sortear'

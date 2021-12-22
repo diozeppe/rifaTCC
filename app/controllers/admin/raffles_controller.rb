@@ -18,7 +18,7 @@ class Admin::RafflesController < ApplicationController
 	  @raffle = Raffle.new(raffle_params)
 	  if @raffle.save
 	  	flash[:sucess] = "Campanha criada com sucesso"
-	  	redirect_to raffles_show(@raffle)
+	  	redirect_to admin_raffle_path(@raffle)
 	  else
 	  	render 'new'
 	  end
@@ -27,7 +27,7 @@ class Admin::RafflesController < ApplicationController
 	def update
 	  if @raffle.update(raffle_params)
 	  	flash[:sucess] = "Campanha atualizada com sucesso"
-	  	redirect_to raffles_show(@raffle)
+	  	redirect_to admin_raffle_path(@raffle)
 	  else
 	  	render 'edit'
 	  end
@@ -41,7 +41,7 @@ class Admin::RafflesController < ApplicationController
 	  
 	  @raffle.destroy
 	  flash[:danger] = "Campanha deletada com sucesso"
-	  redirect_to raffles_path
+	  redirect_to admin_raffles_path
 	end
 
 	private
