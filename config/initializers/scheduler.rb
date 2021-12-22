@@ -56,9 +56,9 @@ scheduler.every '5m' do
         #
         # Email do ganhador
         #
-        #winner_user = User.find(winner_ticket.user_id);
+        winner_user = User.find(winner_ticket.user_id);
 
-        #UsersMailer.with(user: winner_ticket.user, raffle: raffle).raffle_result_winner.deliver_later
+        UsersMailer.with(user: winner_ticket.user, raffle: raffle).raffle_result_winner.deliver_later
 
         #
         # Email dos outros usuarios
