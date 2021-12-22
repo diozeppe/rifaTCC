@@ -150,7 +150,7 @@ class RafflesController < ApplicationController
 		#
 		# Enviamos um email ao usuario
 		#
-		UsersMailer.with(user: @user, raffle: @raffle).raffle_bought.deliver_later
+		#UsersMailer.with(user: @user, raffle: @raffle).raffle_bought.deliver_later
 
 		redirect_to tickets_user_path
 	end

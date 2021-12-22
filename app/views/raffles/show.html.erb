@@ -41,7 +41,7 @@
          <p>Entrega via: <%= @raffle.delivery_type.name %></p>
          <div class="d-flex align-items-stretch flex-column bd-highlight mb-3">
             <div class="p-2 bd-highlight">
-               <% if (pundit_user.instance_of? User) && (@raffle.tickets_number >= @raffle.get_sold_tickets_count) %>
+               <% if (pundit_user.instance_of? User) && (@raffle.tickets_number >= @raffle.get_sold_tickets_count && @raffle.raffle_status_id == 1) %>
                <%= link_to 'Comprar números', raffles_buy_path, :class => 'btn btn-submit-adm' %>
                <% end %>
             </div>

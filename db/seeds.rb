@@ -96,6 +96,7 @@ RaffleStatus.create(:description => 'Aberto');
 RaffleStatus.create(:description => 'Sorteado');
 RaffleStatus.create(:description => 'Aguardando entrega');
 RaffleStatus.create(:description => 'Cancelado');
+RaffleStatus.create(:description => 'Finalizado');
 
 #
 # Cria base de status do ticket

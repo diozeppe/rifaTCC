@@ -61,7 +61,7 @@ class UserController < ApplicationController
 		#
 		# Envia email 
 		#
-		InstitutionMailer.with(raffle: @raffle, institution: @institution).user_confirmed_delivery.deliver_later
+		#InstitutionMailer.with(raffle: @raffle, institution: @institution).user_confirmed_delivery.deliver_later
 
 		redirect_to tickets_user_path
 	end

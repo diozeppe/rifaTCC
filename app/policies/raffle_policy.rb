@@ -7,7 +7,7 @@ class RafflePolicy < ApplicationPolicy
   end
 
   def index?
-    if (controller_name = 'institution/raffles')
+    if (controller_name == 'institution/raffles')
       if @user.instance_of? Institution 
         return true 
       else

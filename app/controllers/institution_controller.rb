@@ -39,7 +39,7 @@ class InstitutionController < ApplicationController
 		#
 		# Envia email 
 		#
-		UsersMailer.with(user: @raffle.winner_ticket.user, raffle: @raffle, institution: @institution).institution_sent_prize.deliver_later
+		#UsersMailer.with(user: @raffle.winner_ticket.user, raffle: @raffle, institution: @institution).institution_sent_prize.deliver_later
 
 		redirect_to institution_raffles_path
 	end
