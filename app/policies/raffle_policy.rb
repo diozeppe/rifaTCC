@@ -7,13 +7,13 @@ class RafflePolicy < ApplicationPolicy
   end
 
   def index?
-    if (controller_name == 'institution/raffles')
-      if @user.instance_of? Institution 
-        return true 
-      else
-        return false # E um instituicao
-      end
-    end
+    #if (controller_name == 'institution/raffles')
+    #  if @user.instance_of? Institution 
+    #    return true 
+    #  else
+    #    return false # E um instituicao
+    #  end
+    #end
     return true
   end
 
